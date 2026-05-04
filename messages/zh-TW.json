@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "關於我們",
+    "products": "嚴選商品",
+    "greenCoin": "綠幣系統",
+    "toyExchange": "玩具交換",
+    "wellness": "心靈課程",
+    "news": "最新消息",
+    "portal": "會員入口",
+    "lang": "EN"
+  },
+  "hero": {
+    "badge": "Green Superman · 數位綠色通路",
+    "title": "境隨心轉 · 綠色循環",
+    "subtitle": "掌握通路，就是贏家 — 讓環保成為你的生活方式與收益來源",
+    "ctaPrimary": "立即加入會員",
+    "ctaSecondary": "了解更多"
+  },
+  "stats": {
+    "members": "180天目標會員",
+    "discount": "最高生活折扣",
+    "counters": "嚴選商品專櫃",
+    "profit": "投資者每日分潤"
+  },
+  "products": {
+    "title": "10 大嚴選專櫃",
+    "subtitle": "去中間化直採，比市價便宜 25-30%"
+  },
+  "toyExchange": {
+    "badge": "特色服務",
+    "title": "社區玩具交換站",
+    "description": "孩子長大了，玩具也該繼續被愛。將家中閒置玩具帶至據點，經衛生核驗後換取綠幣，讓玩具在社區間流通，減少浪費。",
+    "step1": "帶玩具到據點",
+    "step2": "現場衛生核驗",
+    "step3": "綠幣即時入帳",
+    "cta": "查看交換規則 →"
+  },
+  "greenCoin": {
+    "title": "綠幣循環系統",
+    "description": "舊物換成綠幣，再用綠幣折抵購物或兌換心靈課程。讓每一件閒置物品都重新流動，成為你的生活資本。",
+    "cta": "立即了解 →"
+  },
+  "news": {
+    "title": "最新消息"
+  },
+  "footer": {
+    "rights": "© 2025 綠超人環保促進會 · Green Superman Association · 台南市"
+  },
+  "about": {
+    "title": "關於綠超人環保促進會",
+    "subtitle": "公益事業企業化，讓環保產生真實的社會影響力",
+    "visionTitle": "組織願景",
+    "vision": "在 21 世紀全球經濟波動與環境變遷的雙重挑戰下，建立一個全球網路連線的綠色經濟循環體系。",
+    "missionTitle": "核心理念",
+    "mission": "「環保」不應只是物質的回收，更應是心靈的淨化。我們主張「境隨心轉」，當個體內心安定，自然能減少盲目消費與資源浪費，達成永續生活的最高境界。",
+    "teamsTitle": "八大工作小組"
+  },
+  "news_page": {
+    "title": "最新消息",
+    "subtitle": "活動公告、課程資訊、社區動態"
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "有任何問題，歡迎透過 LINE 或表單聯繫"
+  },
+  "wellness_page": {
+    "title": "心靈環保課程",
+    "subtitle": "境隨心轉 — 內在安定是永續生活的起點"
+  },
+  "portal": {
+    "title": "會員入口",
+    "subtitle": "會員登入功能即將上線，敬請期待。",
+    "lineButton": "透過 LINE 聯絡我們"
+  }
+}

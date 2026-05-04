@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "About",
+    "products": "Products",
+    "greenCoin": "G-Coin",
+    "toyExchange": "Toy Exchange",
+    "wellness": "Wellness",
+    "news": "News",
+    "portal": "Member Portal",
+    "lang": "中文"
+  },
+  "hero": {
+    "badge": "Green Superman · Digital Green Channel",
+    "title": "Inner Peace · Green Cycle",
+    "subtitle": "Own the channel, win the game — make eco-living your lifestyle and income source",
+    "ctaPrimary": "Join Now",
+    "ctaSecondary": "Learn More"
+  },
+  "stats": {
+    "members": "180-Day Member Goal",
+    "discount": "Max. Savings",
+    "counters": "Curated Counters",
+    "profit": "Daily Investor Return"
+  },
+  "products": {
+    "title": "10 Curated Counters",
+    "subtitle": "Direct sourcing — 25-30% below market price"
+  },
+  "toyExchange": {
+    "badge": "Featured Service",
+    "title": "Community Toy Exchange",
+    "description": "Your child has grown, but toys deserve more love. Bring gently-used toys to our outlet, pass hygiene checks, and receive G-Coins instantly.",
+    "step1": "Bring toys to outlet",
+    "step2": "On-site hygiene check",
+    "step3": "G-Coins credited instantly",
+    "cta": "View Exchange Rules →"
+  },
+  "greenCoin": {
+    "title": "G-Coin Circular System",
+    "description": "Exchange items for G-Coins, then use them to offset purchases or redeem wellness courses. Every idle item becomes your life capital.",
+    "cta": "Learn More →"
+  },
+  "news": {
+    "title": "Latest News"
+  },
+  "footer": {
+    "rights": "© 2025 Green Superman Association · Tainan, Taiwan"
+  },
+  "about": {
+    "title": "About Green Superman",
+    "subtitle": "A social enterprise driving real environmental impact",
+    "visionTitle": "Our Vision",
+    "vision": "Build a globally connected green circular economy to address economic instability and environmental change in the 21st century.",
+    "missionTitle": "Core Philosophy",
+    "mission": "Environmental protection isn't just about recycling — it's about inner transformation. When individuals find inner peace, they naturally reduce wasteful consumption and achieve sustainable living.",
+    "teamsTitle": "8 Operational Teams"
+  },
+  "news_page": {
+    "title": "Latest News",
+    "subtitle": "Events, courses, and community updates"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Reach us via LINE or the form below"
+  },
+  "wellness_page": {
+    "title": "Wellness Courses",
+    "subtitle": "Inner peace is the foundation of sustainable living"
+  },
+  "portal": {
+    "title": "Member Portal",
+    "subtitle": "Member login coming soon. Stay tuned.",
+    "lineButton": "Contact us via LINE"
+  }
+}
