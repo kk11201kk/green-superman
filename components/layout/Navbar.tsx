@@ -27,7 +27,9 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link href={`/${locale}`} className="flex items-center gap-2">
           <Image src="/logo.png" alt="Greenman Association Logo" width={40} height={40} className="object-contain" />
-          <span style={{ color: 'var(--color-green-dark)' }} className="font-bold text-sm">Greenman</span>
+          <span style={{ color: 'var(--color-green-dark)' }} className="font-bold text-sm leading-tight">
+            社團法人<br />綠超人行動促進會
+          </span>
         </Link>
 
         {/* Mobile: only portal + lang switcher */}
