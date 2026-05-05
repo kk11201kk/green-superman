@@ -22,8 +22,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <p className="text-xs uppercase tracking-widest mb-6" style={{ color: 'var(--color-green-light)' }}>
           {t('subtitle')}
         </p>
-        <blockquote className="max-w-2xl mx-auto">
-          <p className="text-2xl md:text-3xl font-black text-white leading-snug mb-5">
+        <blockquote className="max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl font-black text-white leading-snug mb-5 whitespace-nowrap">
             「{t('heroQuote')}」
           </p>
           <cite className="text-sm not-italic" style={{ color: 'var(--color-orange-accent)' }}>
