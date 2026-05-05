@@ -25,18 +25,24 @@ export default function ContactPage() {
         <div className="bg-white border border-[var(--color-green-light)] rounded-2xl p-6 shadow-sm">
           <h3 className="font-bold text-[var(--color-green-dark)] mb-4">✉️ 線上詢問</h3>
           <form className="flex flex-col gap-3">
+            <label htmlFor="contact-name" className="sr-only">姓名</label>
             <input
+              id="contact-name"
               type="text"
               placeholder="您的姓名"
               className="border border-[var(--color-green-light)] rounded-lg px-4 py-2.5 text-sm focus:outline-none"
               style={{ '--tw-ring-color': 'var(--color-green-primary)' } as React.CSSProperties}
             />
+            <label htmlFor="contact-email" className="sr-only">電子郵件</label>
             <input
+              id="contact-email"
               type="email"
               placeholder="電子郵件"
               className="border border-[var(--color-green-light)] rounded-lg px-4 py-2.5 text-sm focus:outline-none"
             />
+            <label htmlFor="contact-message" className="sr-only">詢問內容</label>
             <textarea
+              id="contact-message"
               placeholder="詢問內容"
               rows={4}
               className="border border-[var(--color-green-light)] rounded-lg px-4 py-2.5 text-sm focus:outline-none resize-none"
