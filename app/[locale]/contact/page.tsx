@@ -1,9 +1,13 @@
+import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'contact' })
+
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
-      <SectionHeading title="聯絡我們" subtitle="有任何問題，歡迎透過 LINE 或表單聯繫" />
+      <SectionHeading title={t('title')} subtitle={t('subtitle')} />
 
       <div className="grid md:grid-cols-2 gap-6 mb-10">
         <div className="bg-white border border-[var(--color-green-light)] rounded-2xl p-6 shadow-sm">

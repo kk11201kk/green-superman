@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 const courses = [
@@ -27,10 +28,13 @@ const courses = [
   },
 ]
 
-export default function WellnessPage() {
+export default async function WellnessPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'wellness_page' })
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      <SectionHeading title="🧘 心靈環保課程" subtitle="境隨心轉 — 內在安定是永續生活的起點" />
+      <SectionHeading title={t('title')} subtitle={t('subtitle')} />
       <div className="grid md:grid-cols-3 gap-6">
         {courses.map((cat) => (
           <div key={cat.category} className="bg-white border border-[var(--color-green-light)] rounded-2xl p-5 shadow-sm">

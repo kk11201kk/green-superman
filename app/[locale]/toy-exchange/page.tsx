@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
 import ExchangeTable from '@/components/toy-exchange/ExchangeTable'
 import FAQ from '@/components/toy-exchange/FAQ'
@@ -10,17 +11,26 @@ const faqItems = [
   { q: '一次可以帶幾件？', a: '每次最多帶 10 件，若數量較多請事先聯絡據點安排。' },
 ]
 
-const steps = [
-  { num: '1', title: '拍照預審', desc: '透過 LINE 官方帳號上傳玩具照片，由工作人員初步評估可接受項目。' },
-  { num: '2', title: '現場衛生核驗', desc: '攜帶玩具至社區福利中心，由經營者依「資源重生核驗標準」現場核對。' },
-  { num: '3', title: '綠幣即時入帳', desc: '核驗合格後，系統依「綠幣價值對照表」即時發放綠幣至您的會員錢包。' },
+const stepDescs = [
+  '透過 LINE 官方帳號上傳玩具照片，由工作人員初步評估可接受項目。',
+  '攜帶玩具至社區福利中心，由經營者依「資源重生核驗標準」現場核對。',
+  '核驗合格後，系統依「綠幣價值對照表」即時發放綠幣至您的會員錢包。',
 ]
 
-export default function ToyExchangePage() {
+export default async function ToyExchangePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'toyExchange' })
+
+  const steps = [
+    { num: '1', title: t('step1'), desc: stepDescs[0] },
+    { num: '2', title: t('step2'), desc: stepDescs[1] },
+    { num: '3', title: t('step3'), desc: stepDescs[2] },
+  ]
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <SectionHeading
-        title="🧸 社區玩具交換站"
+        title={t('title')}
         subtitle="孩子長大了，玩具也該繼續被愛 — 帶來舊玩具，換走綠幣"
       />
 

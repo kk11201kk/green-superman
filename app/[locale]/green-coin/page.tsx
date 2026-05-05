@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 const usages = [
@@ -12,15 +13,18 @@ const steps = [
   { step: '3', title: '綠幣入帳', desc: '核驗合格後，GCS-IC 系統即時發放綠幣至會員錢包。' },
 ]
 
-export default function GreenCoinPage() {
+export default async function GreenCoinPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'greenCoin' })
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      <SectionHeading title="🪙 綠幣系統（G-Coin）" subtitle="資源重生的數位貨幣，讓每件閒置物品都有價值" />
+      <SectionHeading title={t('title')} subtitle="資源重生的數位貨幣，讓每件閒置物品都有價值" />
 
       <div className="bg-[var(--color-green-pale)] border border-[var(--color-green-light)] rounded-2xl p-6 mb-10">
         <h3 className="font-bold text-[var(--color-green-dark)] mb-2">什麼是綠幣？</h3>
         <p className="text-sm text-[var(--color-green-mid)] leading-relaxed">
-          綠幣（G-Coin）不只是點數，而是具備「身心能量」屬性的通用代幣。每一枚綠幣的產生與流向均記錄於雲端帳本，不可偽造。綠幣之折抵價值與新台幣掛鉤，確保「綠幣即價值」。
+          {t('description')}
         </p>
       </div>
 

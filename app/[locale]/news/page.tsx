@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 const newsItems = [
@@ -12,10 +13,13 @@ const tagStyles: Record<string, { bg: string; color: string }> = {
   公告: { bg: '#EFF6FF', color: '#2563EB' },
 }
 
-export default function NewsPage() {
+export default async function NewsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'news_page' })
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      <SectionHeading title="最新消息" subtitle="活動公告、課程資訊、社區動態" />
+      <SectionHeading title={t('title')} subtitle={t('subtitle')} />
       <div className="flex flex-col gap-5">
         {newsItems.map((item) => (
           <div key={item.id} className="bg-white border border-[var(--color-green-light)] rounded-2xl p-6 shadow-sm">

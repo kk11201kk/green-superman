@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 const products = [
@@ -13,10 +14,13 @@ const products = [
   { emoji: '🌱', name: '居家綠色植栽櫃', en: 'Green Plants', desc: '淨化空氣植栽、有機肥料、自動澆灌模組', value: '森林居家，氧氣生活。' },
 ]
 
-export default function ProductsPage() {
+export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'products' })
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
-      <SectionHeading title="10 大嚴選專櫃" subtitle="去中間化直採，比市價便宜 25-30%" />
+      <SectionHeading title={t('title')} subtitle={t('subtitle')} />
       <div className="grid md:grid-cols-2 gap-5">
         {products.map((p, i) => (
           <div key={p.name} className="bg-white border border-[var(--color-green-light)] rounded-2xl p-5 shadow-sm flex gap-4 items-start">
