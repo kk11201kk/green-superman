@@ -38,8 +38,8 @@ export default function HeroBanner() {
       <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <Link
           href={`/${locale}/portal`}
-          className="rounded-lg px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-          style={{ backgroundColor: 'var(--color-orange-accent)' }}
+          className="rounded-lg px-7 py-3 text-sm font-semibold transition-opacity hover:opacity-90"
+          style={{ backgroundColor: 'var(--color-orange-accent)', color: 'var(--color-green-dark)' }}
         >
           {t('ctaPrimary')}
         </Link>
