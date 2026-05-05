@@ -4,6 +4,7 @@
     "products": "Products",
     "greenCoin": "G-Coin",
     "toyExchange": "Toy Exchange",
+    "idleExchange": "Resource Exchange",
     "wellness": "Wellness",
     "news": "News",
     "portal": "Member Portal",
@@ -36,6 +37,18 @@
     "step2": "On-site hygiene check",
     "step3": "G-Coins credited instantly",
     "cta": "View Exchange Rules →"
+  },
+  "idleExchange": {
+    "badge": "Featured Service",
+    "title": "Idle Resource Exchange",
+    "description": "Got items you no longer need? Bring them to our community outlet, let idle resources flow again, earn G-Coins, and give every item a new home — kindness circulating through the neighborhood.",
+    "step1": "Register your items",
+    "step2": "Review & listing",
+    "step3": "Exchange & earn G-Coins",
+    "cta": "View Exchange Rules →",
+    "pageSubtitle": "Idle items aren't waste — they're resources waiting to flow",
+    "categoriesTitle": "Exchangeable Resource Types",
+    "faqTitle": "FAQ"
   },
   "greenCoin": {
     "title": "G-Coin Circular System",

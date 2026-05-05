@@ -4,6 +4,7 @@
     "products": "嚴選商品",
     "greenCoin": "綠幣系統",
     "toyExchange": "玩具交換",
+    "idleExchange": "閒置交換",
     "wellness": "心靈課程",
     "news": "最新消息",
     "portal": "會員入口",
@@ -36,6 +37,18 @@
     "step2": "現場衛生核驗",
     "step3": "綠幣即時入帳",
     "cta": "查看交換規則 →"
+  },
+  "idleExchange": {
+    "badge": "特色服務",
+    "title": "閒置資源交換站",
+    "description": "家中有用不到的物品嗎？帶來社區據點，讓閒置資源重新流動，換取綠幣，讓每一件物品都找到新主人，讓每一份善意都在鄰里間流轉。",
+    "step1": "登記閒置物品",
+    "step2": "媒合審核上架",
+    "step3": "完成交換 · 獲幣",
+    "cta": "了解交換規則 →",
+    "pageSubtitle": "閒置物品不是廢棄物，而是等待流動的資源",
+    "categoriesTitle": "可交換的資源類型",
+    "faqTitle": "常見問題"
   },
   "greenCoin": {
     "title": "綠幣循環系統",
