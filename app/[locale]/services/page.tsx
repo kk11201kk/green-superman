@@ -1,127 +1,107 @@
 import SectionHeading from '@/components/ui/SectionHeading'
 import type { ReactNode } from 'react'
 
-// ─── Flow primitives ──────────────────────────────────────────────────────────
+// ─── Timeline step ────────────────────────────────────────────────────────────
 
-function FlowStart({ label = '開始' }: { label?: string }) {
+function Step({
+  n, title, sub, last = false,
+}: { n: number; title: string; sub?: string; last?: boolean }) {
   return (
-    <div className="flex justify-center">
-      <span className="bg-[var(--color-green-dark)] text-white text-xs font-bold px-6 py-1.5 rounded-full tracking-wide">
-        {label}
-      </span>
-    </div>
-  )
-}
-
-function FlowEnd({ label = '結束' }: { label?: string }) {
-  return (
-    <div className="flex justify-center">
-      <span className="bg-[var(--color-green-mid)] text-white text-xs font-bold px-6 py-1.5 rounded-full tracking-wide">
-        {label}
-      </span>
-    </div>
-  )
-}
-
-function FlowStep({ children, sub, small }: { children: ReactNode; sub?: string; small?: boolean }) {
-  return (
-    <div className="flex justify-center">
-      <div
-        className={`bg-white border-2 border-[var(--color-green-light)] rounded-xl text-center shadow-sm w-full
-          ${small ? 'px-2 py-2 max-w-[160px]' : 'px-5 py-3 max-w-[260px]'}`}
-      >
-        <p className={`font-semibold text-[var(--color-green-dark)] ${small ? 'text-[11px]' : 'text-sm'}`}>
-          {children}
-        </p>
-        {sub && <p className="text-[10px] text-[var(--color-green-mid)] mt-0.5 leading-snug">{sub}</p>}
+    <div className="flex gap-5">
+      <div className="flex flex-col items-center">
+        <div
+          className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-black text-base text-white shadow-md"
+          style={{ background: 'var(--color-green-primary)' }}
+        >
+          {n}
+        </div>
+        {!last && (
+          <div className="w-0.5 flex-1 mt-2" style={{ background: 'var(--color-green-light)' }} />
+        )}
       </div>
-    </div>
-  )
-}
-
-function FlowDecision({ children }: { children: ReactNode }) {
-  return (
-    <div className="flex justify-center">
-      <div className="bg-amber-50 border-2 border-amber-400 rounded-xl px-5 py-2.5 text-center shadow-sm">
-        <span className="text-amber-400 text-xs mr-1">◆</span>
-        <span className="font-bold text-sm text-amber-800">{children}</span>
-      </div>
-    </div>
-  )
-}
-
-function FlowReject({ children, sub }: { children: ReactNode; sub?: string }) {
-  return (
-    <div className="flex justify-center w-full">
-      <div className="bg-red-50 border-2 border-red-200 rounded-xl px-3 py-2 text-center w-full">
-        <p className="font-semibold text-[11px] text-red-600">{children}</p>
-        {sub && <p className="text-[10px] text-red-400 mt-0.5">{sub}</p>}
-      </div>
-    </div>
-  )
-}
-
-function FlowGood({ children, sub }: { children: ReactNode; sub?: string }) {
-  return (
-    <div className="flex justify-center w-full">
-      <div className="bg-[var(--color-green-pale)] border-2 border-[var(--color-green-primary)] rounded-xl px-3 py-2 text-center w-full">
-        <p className="font-semibold text-[11px] text-[var(--color-green-dark)]">{children}</p>
-        {sub && <p className="text-[10px] text-[var(--color-green-mid)] mt-0.5">{sub}</p>}
-      </div>
-    </div>
-  )
-}
-
-function FlowCard({ emoji, label, sub, color = 'blue' }: {
-  emoji: string
-  label: string
-  sub?: string
-  color?: 'blue' | 'purple' | 'green' | 'amber'
-}) {
-  const colorMap = {
-    blue: 'bg-blue-50 border-blue-200 text-blue-700',
-    purple: 'bg-purple-50 border-purple-200 text-purple-700',
-    green: 'bg-[var(--color-green-pale)] border-[var(--color-green-light)] text-[var(--color-green-dark)]',
-    amber: 'bg-amber-50 border-amber-200 text-amber-700',
-  }
-  return (
-    <div className={`border-2 rounded-xl p-3 text-center ${colorMap[color]}`}>
-      <div className="text-xl mb-1">{emoji}</div>
-      <p className="font-semibold text-[11px]">{label}</p>
-      {sub && <p className="text-[10px] opacity-70 mt-0.5">{sub}</p>}
-    </div>
-  )
-}
-
-function Arr({ label, color = 'green' }: { label?: string; color?: 'green' | 'red' | 'amber' }) {
-  const c = { green: 'text-[var(--color-green-mid)]', red: 'text-red-400', amber: 'text-amber-400' }
-  return (
-    <div className="flex flex-col items-center my-1.5">
-      {label && <span className={`text-[10px] ${c[color]} mb-0.5 font-medium`}>{label}</span>}
-      <span className={`${c[color]} text-base leading-none`}>↓</span>
-    </div>
-  )
-}
-
-function FlowSection({ id, icon, title, subtitle, children }: {
-  id: string
-  icon: string
-  title: string
-  subtitle: string
-  children: ReactNode
-}) {
-  return (
-    <section id={id} className="scroll-mt-24">
-      <div className="flex items-center gap-3 mb-3">
-        <span className="text-4xl">{icon}</span>
-        <div>
-          <h2 className="text-lg font-bold text-[var(--color-green-dark)]">{title}</h2>
-          <p className="text-xs text-[var(--color-green-mid)]">{subtitle}</p>
+      <div className={`flex-1 ${last ? 'pb-0' : 'pb-7'}`}>
+        <div
+          className="rounded-2xl px-5 py-4 border shadow-sm"
+          style={{ background: 'white', borderColor: 'var(--color-green-light)' }}
+        >
+          <p className="font-bold text-sm" style={{ color: 'var(--color-green-dark)' }}>{title}</p>
+          {sub && (
+            <p className="text-xs mt-1 leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>{sub}</p>
+          )}
         </div>
       </div>
-      <div className="bg-white border-2 border-[var(--color-green-light)] rounded-2xl p-6 shadow-sm">
-        <div className="flex flex-col">{children}</div>
+    </div>
+  )
+}
+
+// ─── Outcome card row ─────────────────────────────────────────────────────────
+
+function OutcomeCard({
+  emoji, label, sub, variant = 'green',
+}: { emoji: string; label: string; sub?: string; variant?: 'green' | 'blue' | 'amber' | 'red' }) {
+  const styles: Record<string, { bg: string; border: string; text: string }> = {
+    green:  { bg: 'var(--color-green-pale)',  border: 'var(--color-green-primary)', text: 'var(--color-green-dark)' },
+    blue:   { bg: '#EFF6FF',                  border: '#93C5FD',                   text: '#1E40AF' },
+    amber:  { bg: '#FFFBEB',                  border: '#FCD34D',                   text: '#92400E' },
+    red:    { bg: '#FEF2F2',                  border: '#FCA5A5',                   text: '#991B1B' },
+  }
+  const s = styles[variant]
+  return (
+    <div
+      className="flex-1 rounded-2xl p-4 border-2 text-center"
+      style={{ background: s.bg, borderColor: s.border }}
+    >
+      <div className="text-2xl mb-2">{emoji}</div>
+      <p className="font-bold text-xs" style={{ color: s.text }}>{label}</p>
+      {sub && <p className="text-[10px] mt-1 opacity-70" style={{ color: s.text }}>{sub}</p>}
+    </div>
+  )
+}
+
+// ─── Decision node ────────────────────────────────────────────────────────────
+
+function Decision({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex gap-5 mb-7">
+      <div className="flex flex-col items-center">
+        <div
+          className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-black text-base text-white shadow-md"
+          style={{ background: '#D97706' }}
+        >
+          ◆
+        </div>
+        <div className="w-0.5 flex-1 mt-2" style={{ background: 'var(--color-green-light)' }} />
       </div>
+      <div className="flex-1">
+        <div className="rounded-2xl px-5 py-4 border-2 shadow-sm bg-amber-50 border-amber-300">
+          <p className="font-bold text-sm text-amber-800">{children}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Section wrapper ──────────────────────────────────────────────────────────
+
+function ServiceSection({
+  id, emoji, title, subtitle, children,
+}: { id: string; emoji: string; title: string; subtitle: string; children: ReactNode }) {
+  return (
+    <section id={id} className="scroll-mt-24">
+      {/* Section header */}
+      <div
+        className="rounded-3xl px-8 py-6 mb-8 flex items-center gap-5"
+        style={{ background: `linear-gradient(135deg, var(--color-green-dark) 0%, var(--color-green-primary) 100%)` }}
+      >
+        <span className="text-5xl">{emoji}</span>
+        <div>
+          <h2 className="text-xl font-black text-white">{title}</h2>
+          <p className="text-sm mt-0.5" style={{ color: 'var(--color-green-light)' }}>{subtitle}</p>
+        </div>
+      </div>
+
+      {/* Steps */}
+      <div className="pl-2">{children}</div>
     </section>
   )
 }
@@ -132,198 +112,141 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   await params
 
   return (
-    <div className="max-w-xl mx-auto px-6 py-12">
+    <div className="max-w-2xl mx-auto px-6 py-12">
 
-      {/* Header */}
       <SectionHeading title="服務流程說明" subtitle="玩具交換 · 腦波檢測 · 腦波調頻療程" center />
 
-      {/* Quick nav anchors */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
+      {/* Quick nav */}
+      <div className="flex flex-wrap justify-center gap-2 mb-12">
         {[
-          { href: '#toy-exchange',       label: '🪀 玩具交換' },
-          { href: '#brainwave-check',    label: '🧠 腦波檢測' },
-          { href: '#brainwave-therapy',  label: '🎵 腦波療程' },
+          { href: '#toy-exchange',      label: '🪀 玩具交換' },
+          { href: '#brainwave-check',   label: '🧠 腦波檢測' },
+          { href: '#brainwave-therapy', label: '🎵 腦波療程' },
         ].map(({ href, label }) => (
           <a
             key={href}
             href={href}
-            className="text-xs font-semibold px-4 py-1.5 rounded-full border-2 border-[var(--color-green-primary)] text-[var(--color-green-primary)] hover:bg-[var(--color-green-pale)] transition-colors"
+            className="text-sm font-semibold px-5 py-2 rounded-full border-2 transition-colors hover:opacity-80"
+            style={{
+              borderColor: 'var(--color-green-primary)',
+              color: 'var(--color-green-primary)',
+            }}
           >
             {label}
           </a>
         ))}
       </div>
 
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-16">
 
-        {/* ══════════════════════════════════════════════════
-            1. TOY EXCHANGE
-        ═════════════════════════════════════════════════════ */}
-        <FlowSection id="toy-exchange" icon="🪀" title="玩具交換流程" subtitle="帶來舊玩具，換走綠幣">
+        {/* ══ 1. TOY EXCHANGE ══════════════════════════════════════════════ */}
+        <ServiceSection id="toy-exchange" emoji="🪀" title="玩具交換流程" subtitle="帶來舊玩具，換走綠幣 G-Coin">
 
-          <FlowStart />
-          <Arr />
-          <FlowStep sub="透過 LINE 官方帳號上傳玩具照片">LINE 上傳照片預審</FlowStep>
-          <Arr />
-          <FlowDecision>工作人員線上評估</FlowDecision>
+          <Step n={1} title="LINE 上傳照片預審" sub="透過 LINE 官方帳號上傳玩具照片，工作人員進行線上初步評估" />
+          <Step n={2} title="核驗結果通知" sub="合格：收到通知後，攜帶玩具至社區福利中心據點；不合格：收到退件說明，流程結束" />
+          <Step n={3} title="攜帶玩具至據點現場核驗" sub="工作人員進行實體衛生與品質核驗，確認玩具狀態符合交換標準" />
+          <Step n={4} title="GCS-IC 計算綠幣數量" sub="依照玩具對照表計算應發綠幣，數量當場確認" />
+          <Step n={5} title="綠幣即時入帳" sub="掃碼或報號，G-Coin 立即存入帳戶" last />
 
-          {/* Branch 1 */}
-          <div className="grid grid-cols-2 gap-4 mt-2">
-
-            {/* Left: reject */}
-            <div className="flex flex-col items-center gap-1">
-              <Arr label="↙ 不合格" color="red" />
-              <FlowReject sub="附上不接受原因">退件通知</FlowReject>
-              <Arr color="red" />
-              <FlowEnd />
-            </div>
-
-            {/* Right: success → second decision */}
-            <div className="flex flex-col items-center gap-1 w-full">
-              <Arr label="↘ 合格" />
-              <FlowStep small sub="社區福利中心">攜帶玩具至據點</FlowStep>
-              <Arr />
-              <FlowDecision>現場核驗</FlowDecision>
-
-              {/* Nested branch 2 */}
-              <div className="grid grid-cols-2 gap-2 w-full mt-1">
-                <div className="flex flex-col items-center gap-1">
-                  <Arr label="↙ 不合格" color="red" />
-                  <FlowReject>退還玩具</FlowReject>
-                  <Arr color="red" />
-                  <FlowEnd />
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <Arr label="↘ 合格" />
-                  <FlowGood sub="依對照表計算">GCS-IC 發幣</FlowGood>
-                  <Arr />
-                  <FlowGood>綠幣即時入帳</FlowGood>
-                </div>
-              </div>
+          {/* G-Coin uses */}
+          <div
+            className="mt-8 rounded-2xl p-6 border"
+            style={{ background: 'var(--color-green-pale)', borderColor: 'var(--color-green-light)' }}
+          >
+            <p className="text-sm font-bold text-center mb-4" style={{ color: 'var(--color-green-dark)' }}>
+              綠幣可用於
+            </p>
+            <div className="flex gap-3">
+              <OutcomeCard emoji="🛍️" label="折抵嚴選商品" />
+              <OutcomeCard emoji="🧘" label="兌換心靈課程" />
+              <OutcomeCard emoji="💰" label="保留累積使用" />
             </div>
           </div>
 
-          {/* Outcomes */}
-          <div className="mt-6 pt-4 border-t border-dashed border-[var(--color-green-light)]">
-            <p className="text-center text-xs text-[var(--color-green-mid)] mb-3 font-medium">綠幣可用於</p>
-            <div className="grid grid-cols-3 gap-2">
-              <FlowCard emoji="🛍️" label="折抵嚴選商品" color="green" />
-              <FlowCard emoji="🧘" label="兌換心靈課程" color="green" />
-              <FlowCard emoji="💰" label="保留累積" color="green" />
-            </div>
-          </div>
+        </ServiceSection>
 
-        </FlowSection>
+        {/* ══ 2. BRAINWAVE DETECTION ══════════════════════════════════════ */}
+        <ServiceSection id="brainwave-check" emoji="🧠" title="腦波檢測流程" subtitle="了解當下身心壓力與放鬆狀態">
 
-        {/* ══════════════════════════════════════════════════
-            2. BRAINWAVE DETECTION
-        ═════════════════════════════════════════════════════ */}
-        <FlowSection id="brainwave-check" icon="🧠" title="腦波檢測流程" subtitle="了解當下身心壓力與放鬆狀態">
-
-          <FlowStart />
-          <Arr />
-          <FlowStep sub="LINE 預約 或 現場報名">預約報名</FlowStep>
-          <Arr />
-          <FlowStep sub="壓力狀況 · 睡眠品質 · 情緒狀態">填寫基本問卷</FlowStep>
-          <Arr />
-          <FlowStep>佩戴腦波量測設備</FlowStep>
-          <Arr />
-          <FlowStep sub="靜坐閉眼 · 自然呼吸 5–10 分鐘">安靜量測</FlowStep>
-          <Arr />
-          <FlowStep sub="α · β · θ · δ 波段分析">系統分析波段數據</FlowStep>
-          <Arr />
-          <FlowStep>出具個人腦波報告</FlowStep>
-          <Arr />
-          <FlowStep sub="工作人員說明各波段狀態">一對一解讀諮詢</FlowStep>
-          <Arr />
-          <FlowDecision>壓力 / 放鬆指數評估</FlowDecision>
-
-          {/* 3-way branch */}
-          <div className="grid grid-cols-3 gap-2 mt-2">
-            <div className="flex flex-col items-center gap-1">
-              <Arr label="高壓 / 低α波" color="red" />
-              <FlowCard emoji="🎵" label="腦波調頻療程" color="blue" />
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Arr label="睡眠不足" color="amber" />
-              <FlowCard emoji="🌙" label="深眠音頻療程" color="blue" />
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Arr label="狀態良好" />
-              <FlowCard emoji="📋" label="自主練習指引" color="blue" />
-            </div>
-          </div>
-
-          <Arr />
-          <FlowStep sub="G-Coin 可完整兌換或折抵">可用綠幣折抵費用</FlowStep>
-          <Arr />
-          <FlowEnd />
-
-        </FlowSection>
-
-        {/* ══════════════════════════════════════════════════
-            3. BRAINWAVE THERAPY
-        ═════════════════════════════════════════════════════ */}
-        <FlowSection id="brainwave-therapy" icon="🎵" title="腦波調頻療程流程" subtitle="依檢測結果，引導大腦進入最佳修復波段">
-
-          <FlowStart />
-          <Arr />
-          <FlowStep sub="根據腦波報告推薦">選擇療程類型</FlowStep>
-          <Arr />
-
-          {/* 3 therapy types */}
-          <div className="grid grid-cols-3 gap-2">
-            <FlowCard emoji="😌" label="α 波引導" sub="放鬆 · 抗焦慮" color="purple" />
-            <FlowCard emoji="🌀" label="θ 波引導" sub="冥想 · 創造力" color="purple" />
-            <FlowCard emoji="🌙" label="δ 波引導" sub="深眠修復" color="purple" />
-          </div>
-          <Arr label="選定後進入療程" />
-
-          {/* Common steps */}
-          <FlowStep sub="舒適椅 · 燈光調暗 · 精油擴香">環境準備</FlowStep>
-          <Arr />
-          <FlowStep>佩戴耳機 / 音頻播放開始</FlowStep>
-          <Arr />
-          <FlowStep sub="閉眼 · 自然呼吸 · 被動接收">療程進行 20–40 分鐘</FlowStep>
-          <Arr />
-          <FlowStep>療程結束 · 緩慢回神</FlowStep>
-          <Arr />
-          <FlowStep sub="主觀感受 · 放鬆程度">填寫回饋問卷</FlowStep>
-          <Arr />
-          <FlowStep>工作人員建議後續方案</FlowStep>
-          <Arr />
-          <FlowDecision>選擇下一步</FlowDecision>
+          <Step n={1} title="預約報名" sub="透過 LINE 官方帳號預約，或直接至社區福利中心現場報名" />
+          <Step n={2} title="填寫基本問卷" sub="記錄近期壓力狀況、睡眠品質、情緒狀態，作為量測參考基準" />
+          <Step n={3} title="佩戴腦波量測設備" sub="工作人員協助佩戴非侵入式腦波感測器，過程安全無痛" />
+          <Step n={4} title="安靜量測 5–10 分鐘" sub="靜坐閉眼，自然呼吸，系統同步擷取 α、β、θ、δ 各波段數據" />
+          <Step n={5} title="系統分析 · 出具腦波報告" sub="量測結束後，系統自動運算並產出個人化腦波分析報告" />
+          <Step n={6} title="一對一解讀諮詢" sub="工作人員逐項說明各波段狀態，解讀壓力與放鬆指數" last />
 
           {/* 3-way outcome */}
-          <div className="grid grid-cols-3 gap-2 mt-2">
-            <div className="flex flex-col items-center gap-1">
-              <Arr label="持續改善" />
-              <FlowCard emoji="📅" label="預約下次療程" color="blue" />
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Arr label="自主練習" color="amber" />
-              <FlowCard emoji="🏠" label="居家音頻資源" color="blue" />
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Arr label="追蹤效果" />
-              <FlowCard emoji="🔄" label="一個月後回測" color="blue" />
+          <div className="mt-8">
+            <p className="text-sm font-bold text-center mb-4" style={{ color: 'var(--color-green-dark)' }}>
+              根據結果推薦後續方案
+            </p>
+            <div className="flex gap-3">
+              <OutcomeCard emoji="🎵" label="腦波調頻療程" sub="高壓 / 低 α 波" variant="blue" />
+              <OutcomeCard emoji="🌙" label="深眠音頻療程" sub="睡眠不足" variant="amber" />
+              <OutcomeCard emoji="📋" label="自主練習指引" sub="狀態良好" variant="green" />
             </div>
           </div>
 
-          <Arr />
-          <FlowEnd />
+          <div className="mt-5 text-center">
+            <p className="text-xs" style={{ color: 'var(--color-green-mid)' }}>
+              所有後續方案費用均可使用 G-Coin 折抵
+            </p>
+          </div>
 
-        </FlowSection>
+        </ServiceSection>
+
+        {/* ══ 3. BRAINWAVE THERAPY ════════════════════════════════════════ */}
+        <ServiceSection id="brainwave-therapy" emoji="🎵" title="腦波調頻療程流程" subtitle="依檢測結果，引導大腦進入最佳修復波段">
+
+          {/* Therapy type selector */}
+          <div className="mb-8">
+            <p className="text-sm font-bold mb-3" style={{ color: 'var(--color-green-dark)' }}>
+              療程類型（依腦波報告推薦）
+            </p>
+            <div className="flex gap-3">
+              <OutcomeCard emoji="😌" label="α 波引導" sub="放鬆 · 抗焦慮" variant="blue" />
+              <OutcomeCard emoji="🌀" label="θ 波引導" sub="冥想 · 創造力" variant="blue" />
+              <OutcomeCard emoji="🌙" label="δ 波引導" sub="深眠修復" variant="blue" />
+            </div>
+          </div>
+
+          <Step n={1} title="環境準備" sub="舒適椅、燈光調暗、精油擴香，打造深度放鬆的療癒空間" />
+          <Step n={2} title="佩戴耳機 · 音頻播放開始" sub="依選定波段播放對應頻率音頻，工作人員全程陪同" />
+          <Step n={3} title="療程進行 20–40 分鐘" sub="閉眼、自然呼吸、被動接收頻率引導，無需刻意操作" />
+          <Step n={4} title="療程結束 · 緩慢回神" sub="音頻漸弱後，留在椅上靜待 2–3 分鐘，讓身體自然甦醒" />
+          <Step n={5} title="填寫回饋問卷" sub="記錄主觀感受與放鬆程度，作為下次調整依據" />
+          <Step n={6} title="工作人員建議後續方案" sub="根據本次反應，建議是否安排追蹤或居家練習" last />
+
+          {/* Outcome */}
+          <div className="mt-8">
+            <p className="text-sm font-bold text-center mb-4" style={{ color: 'var(--color-green-dark)' }}>
+              療程後的下一步
+            </p>
+            <div className="flex gap-3">
+              <OutcomeCard emoji="📅" label="預約下次療程" sub="持續改善" variant="green" />
+              <OutcomeCard emoji="🏠" label="居家音頻資源" sub="自主練習" variant="blue" />
+              <OutcomeCard emoji="🔄" label="一個月後回測" sub="追蹤效果" variant="amber" />
+            </div>
+          </div>
+
+        </ServiceSection>
 
         {/* CTA */}
-        <div className="bg-[var(--color-green-pale)] border-2 border-[var(--color-green-light)] rounded-2xl p-6 text-center">
-          <p className="text-sm font-semibold text-[var(--color-green-dark)] mb-1">所有服務均可使用綠幣（G-Coin）折抵</p>
-          <p className="text-xs text-[var(--color-green-mid)] mb-4">透過 LINE 預約或詢問詳情</p>
+        <div
+          className="rounded-3xl p-8 text-center border"
+          style={{ background: 'var(--color-green-pale)', borderColor: 'var(--color-green-light)' }}
+        >
+          <p className="text-base font-black mb-1" style={{ color: 'var(--color-green-dark)' }}>
+            所有服務均可使用綠幣（G-Coin）折抵
+          </p>
+          <p className="text-sm mb-6" style={{ color: 'var(--color-green-mid)' }}>
+            透過 LINE 預約或詢問詳情
+          </p>
           <a
             href="https://line.me"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors"
+            className="inline-block text-white px-8 py-3 rounded-xl text-sm font-bold transition-opacity hover:opacity-80 shadow-md"
             style={{ backgroundColor: 'var(--color-green-primary)' }}
           >
             📱 LINE 立即詢問
