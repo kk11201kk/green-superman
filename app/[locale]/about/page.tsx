@@ -16,30 +16,112 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'about' })
 
+  const pillars = [
+    { title: t('pillar1Title'), desc: t('pillar1Desc') },
+    { title: t('pillar2Title'), desc: t('pillar2Desc') },
+    { title: t('pillar3Title'), desc: t('pillar3Desc') },
+  ]
+
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <SectionHeading title={t('title')} subtitle={t('subtitle')} />
+    <div>
+      {/* ── 開場語錄 Hero ── */}
+      <section
+        className="py-20 px-6 text-center"
+        style={{ background: `linear-gradient(160deg, var(--color-green-dark) 0%, var(--color-green-primary) 100%)` }}
+      >
+        <p className="text-xs uppercase tracking-widest mb-6" style={{ color: 'var(--color-green-light)' }}>
+          {t('subtitle')}
+        </p>
+        <blockquote className="max-w-2xl mx-auto">
+          <p className="text-2xl md:text-3xl font-black text-white leading-snug mb-5">
+            「{t('heroQuote')}」
+          </p>
+          <cite className="text-sm not-italic" style={{ color: 'var(--color-orange-accent)' }}>
+            {t('heroQuoteAuthor')}
+          </cite>
+        </blockquote>
+      </section>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
-        <div className="bg-white rounded-2xl p-6 border border-[var(--color-green-light)] shadow-sm">
-          <h3 className="font-bold text-[var(--color-green-dark)] mb-3">🌍 {t('visionTitle')}</h3>
-          <p className="text-sm text-[var(--color-green-mid)] leading-relaxed">{t('vision')}</p>
-        </div>
-        <div className="bg-white rounded-2xl p-6 border border-[var(--color-green-light)] shadow-sm">
-          <h3 className="font-bold text-[var(--color-green-dark)] mb-3">🧘 {t('missionTitle')}</h3>
-          <p className="text-sm text-[var(--color-green-mid)] leading-relaxed">{t('mission')}</p>
-        </div>
-      </div>
+      <div className="max-w-4xl mx-auto px-6 py-16">
 
-      <SectionHeading title={t('teamsTitle')} />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {teams.map((team, i) => (
-          <div key={team.en} className="bg-[var(--color-green-pale)] border border-[var(--color-green-light)] rounded-xl p-4 text-center">
-            <div className="text-2xl font-black text-[var(--color-green-primary)] mb-1">{i + 1}</div>
-            <p className="text-sm font-semibold text-[var(--color-green-dark)]">{team.zh}</p>
-            <p className="text-xs text-[var(--color-green-mid)] mt-1">{team.en}</p>
-          </div>
-        ))}
+        {/* ── 願景 ── */}
+        <SectionHeading title={t('visionTitle')} center />
+
+        {/* 引言 */}
+        <p className="text-center text-lg font-semibold mb-10" style={{ color: 'var(--color-green-primary)' }}>
+          {t('visionLead')}
+        </p>
+
+        {/* 主文 */}
+        <div
+          className="rounded-3xl p-8 md:p-12 mb-14 border"
+          style={{ background: 'var(--color-green-pale)', borderColor: 'var(--color-green-light)' }}
+        >
+          {t('visionBody').split('\n\n').map((para, i) => (
+            <p
+              key={i}
+              className={`text-base leading-loose mb-5 last:mb-0 ${i === 1 ? 'text-xl font-bold' : ''}`}
+              style={{ color: i === 1 ? 'var(--color-green-dark)' : 'var(--color-green-mid)' }}
+            >
+              {para}
+            </p>
+          ))}
+        </div>
+
+        {/* 三大支柱 */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {pillars.map((p) => (
+            <div
+              key={p.title}
+              className="rounded-2xl p-6 border shadow-sm"
+              style={{ background: 'white', borderColor: 'var(--color-green-light)' }}
+            >
+              <h3 className="font-black text-base mb-3" style={{ color: 'var(--color-green-dark)' }}>
+                {p.title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>
+                {p.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── 核心使命 ── */}
+        <SectionHeading title={t('missionTitle')} center />
+        <div
+          className="rounded-2xl p-8 mb-6 border shadow-sm"
+          style={{ background: 'white', borderColor: 'var(--color-green-light)' }}
+        >
+          <p className="text-base leading-loose" style={{ color: 'var(--color-green-mid)' }}>
+            {t('mission')}
+          </p>
+        </div>
+
+        {/* 結尾宣言 */}
+        <div className="text-center py-10">
+          <p className="text-xl md:text-2xl font-black" style={{ color: 'var(--color-green-primary)' }}>
+            {t('closingStatement')}
+          </p>
+        </div>
+
+        {/* ── 八大工作小組 ── */}
+        <SectionHeading title={t('teamsTitle')} center />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {teams.map((team, i) => (
+            <div
+              key={team.en}
+              className="rounded-xl p-4 text-center border"
+              style={{ background: 'var(--color-green-pale)', borderColor: 'var(--color-green-light)' }}
+            >
+              <div className="text-2xl font-black mb-1" style={{ color: 'var(--color-green-primary)' }}>
+                {i + 1}
+              </div>
+              <p className="text-sm font-semibold" style={{ color: 'var(--color-green-dark)' }}>{team.zh}</p>
+              <p className="text-xs mt-1" style={{ color: 'var(--color-green-mid)' }}>{team.en}</p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   )

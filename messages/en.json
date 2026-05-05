@@ -48,12 +48,22 @@
     "rights": "© 2025 Greenman Association · Tainan, Taiwan"
   },
   "about": {
-    "title": "About Greenman",
-    "subtitle": "A social enterprise driving real environmental impact",
+    "title": "About Us",
+    "subtitle": "Greenman Association",
+    "heroQuote": "Every choice you make is a vote for the world you want to live in.",
+    "heroQuoteAuthor": "— Greenman Association",
     "visionTitle": "Our Vision",
-    "vision": "Build a globally connected green circular economy to address economic instability and environmental change in the 21st century.",
-    "missionTitle": "Core Philosophy",
+    "visionLead": "The world is changing. We choose to stand at the very front of that change.",
+    "visionBody": "Extreme climate events are breaking records. The cost of living is rising. Families feel the weight of it all. We see this — and we see something else, something more important:\n\nDeep inside people, there is an unextinguished desire to live with goodness.\n\nGreenman Association was born at this crossroads. We don't just talk about eco-values — we build a real, livable system where \"caring for the Earth\" also means \"caring for your wallet,\" \"caring for your health,\" and \"caring for your community.\"\n\nWe believe that real change is never lonely. When each person begins to make small choices — choosing clean food, passing a toy to another child, letting their mind find stillness — these forces gather and create ripples that the whole world can feel.",
+    "pillar1Title": "🌱 Earth First",
+    "pillar1Desc": "We build direct green supply chains so every purchase goes straight back to the land and the farmers — not disappearing into layers of profit.",
+    "pillar2Title": "💛 Heart First",
+    "pillar2Desc": "\"Inner peace shapes outer reality\" is our root. External change must begin from inner clarity. A healthy mind is the deepest foundation of sustainable living.",
+    "pillar3Title": "🤝 Community First",
+    "pillar3Desc": "Every community has idle resources, lonely people, and unmet needs. We use the G-Coin system to reconnect this energy, enabling real mutual support between neighbors.",
+    "missionTitle": "Core Mission",
     "mission": "Environmental protection isn't just about recycling — it's about inner transformation. When individuals find inner peace, they naturally reduce wasteful consumption and achieve sustainable living.",
+    "closingStatement": "We are not waiting for a better world — we are building it, together.",
     "teamsTitle": "8 Operational Teams"
   },
   "news_page": {
