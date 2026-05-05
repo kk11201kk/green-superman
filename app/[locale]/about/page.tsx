@@ -84,6 +84,20 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
         {/* ── 核心使命 ── */}
         <SectionHeading title={t('missionTitle')} center />
+
+        {/* 使命宣言 */}
+        <div
+          className="rounded-3xl px-8 py-10 mb-6 text-center"
+          style={{ background: `linear-gradient(135deg, var(--color-green-dark) 0%, var(--color-green-primary) 100%)` }}
+        >
+          <p className="text-xs uppercase tracking-widest font-semibold mb-4" style={{ color: 'var(--color-green-light)' }}>
+            {t('missionTag')}
+          </p>
+          <p className="text-2xl md:text-3xl font-black text-white">
+            {t('missionStatement')}
+          </p>
+        </div>
+
         <div
           className="rounded-2xl p-8 mb-6 border shadow-sm"
           style={{ background: 'white', borderColor: 'var(--color-green-light)' }}

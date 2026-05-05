@@ -16,7 +16,7 @@
   "hero": {
     "badge": "Greenman · Digital Green Channel",
     "title": "Inner Peace · Green Cycle",
-    "subtitle": "Own the channel, win the game — make eco-living your lifestyle and income source",
+    "subtitle": "Our mission: green, eco-friendly products for the well-being of all humanity — making every day healthier and better",
     "ctaPrimary": "Join Now",
     "ctaSecondary": "Learn More"
   },
@@ -79,6 +79,7 @@
     "title": "Latest News"
   },
   "footer": {
+    "mission": "Creating green eco-friendly products for the well-being of all humanity",
     "rights": "© 2025 Greenman Association · Tainan, Taiwan"
   },
   "about": {
@@ -96,7 +97,9 @@
     "pillar3Title": "🤝 Community First",
     "pillar3Desc": "Every community has idle resources, lonely people, and unmet needs. We use the G-Coin system to reconnect this energy, enabling real mutual support between neighbors.",
     "missionTitle": "Core Mission",
-    "mission": "Environmental protection isn't just about recycling — it's about inner transformation. When individuals find inner peace, they naturally reduce wasteful consumption and achieve sustainable living.",
+    "missionTag": "Greenman Association",
+    "missionStatement": "Creating green eco-friendly products for the well-being of all humanity",
+    "mission": "Environmental protection isn't just about recycling — it's about inner transformation. When individuals find inner peace, they naturally reduce wasteful consumption and achieve sustainable living. A healthy mind, a clean environment, a supportive community — this is the life we are building, together.",
     "closingStatement": "We are not waiting for a better world — we are building it, together.",
     "teamsTitle": "8 Operational Teams"
   },
