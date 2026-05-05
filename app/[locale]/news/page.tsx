@@ -1,56 +1,102 @@
+import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
-import SectionHeading from '@/components/ui/SectionHeading'
+import ZenStamp from '@/components/zen/ZenStamp'
+import ZenLine from '@/components/zen/ZenLine'
 
-const zhNewsItems = [
-  { id: 1, date: '2025.06.01', tag: '活動', title: '🧸 6月玩具交換日 — 台南首場活動公告', excerpt: '首場社區玩具交換日即將登場，歡迎會員攜帶閒置玩具前來換取綠幣。' },
-  { id: 2, date: '2025.05.20', tag: '課程', title: '正念減壓工作坊開放報名', excerpt: '本月心靈環保課程「境隨心轉工坊」開放報名，名額有限。' },
-  { id: 3, date: '2025.05.10', tag: '公告', title: '綠超人環保促進會台南示範據點正式啟動', excerpt: '台南首個綠色通路示範區正式投入營運，歡迎加入會員。' },
+const zhPosts = [
+  { slug: 'launch', date: '2025.01.15', cat: '公告', title: '綠超人福利平台正式上線', excerpt: '結合物質環保與心靈環保，邀請社區共同參與，開啟循環新生活。' },
+  { slug: 'tainan-center', date: '2025.02.03', cat: '據點', title: '台南示範據點開幕', excerpt: '位於台南的綠超人福利中心正式營運，提供玩具與閒置物品交換服務。' },
+  { slug: 'wellness-program', date: '2025.02.20', cat: '課程', title: '心靈環保課程系列開課', excerpt: '腦波檢測、八週正念減壓課程，協助現代人重新與自己對話。' },
+  { slug: 'community-event', date: '2025.03.10', cat: '活動', title: '社區共學活動 · 環保與心靈', excerpt: '邀請在地居民共同參與工作坊，分享物質與心靈環保的實踐經驗。' },
+  { slug: 'green-coin-update', date: '2025.03.25', cat: '更新', title: '綠幣換算系統升級公告', excerpt: '優化綠幣換算機制，提供更透明、即時的價值認定流程。' },
 ]
-
-const enNewsItems = [
-  { id: 1, date: '2025.06.01', tag: 'Event', title: '🧸 June Toy Exchange Day — First Tainan Event', excerpt: 'The first community toy exchange day is coming. Members are welcome to bring idle toys and earn G-Coins.' },
-  { id: 2, date: '2025.05.20', tag: 'Course', title: 'Mindfulness Workshop Now Open for Registration', excerpt: 'This month\'s "Inner Peace Workshop" is open for registration. Limited spots available.' },
-  { id: 3, date: '2025.05.10', tag: 'Notice', title: 'Greenman Association Tainan Demo Outlet Officially Launched', excerpt: 'Tainan\'s first green channel demo zone is now operational. Welcome to join as a member.' },
+const enPosts = [
+  { slug: 'launch', date: '2025.01.15', cat: 'News', title: 'GreenSuper Welfare Platform Launches', excerpt: 'Combining material and mental sustainability for community-wide impact.' },
+  { slug: 'tainan-center', date: '2025.02.03', cat: 'Center', title: 'Tainan Demonstration Center Opens', excerpt: 'GreenSuper Welfare Center now operating with toy and idle exchange services.' },
+  { slug: 'wellness-program', date: '2025.02.20', cat: 'Course', title: 'Mental Wellness Program Series Begins', excerpt: 'Brainwave assessment and 8-week mindfulness program now enrolling.' },
+  { slug: 'community-event', date: '2025.03.10', cat: 'Event', title: 'Community Learning · Eco & Mind', excerpt: 'Workshops for local residents to share sustainability practice.' },
+  { slug: 'green-coin-update', date: '2025.03.25', cat: 'Update', title: 'G-Coin System Upgrade', excerpt: 'Optimized exchange mechanism for more transparent value recognition.' },
 ]
-
-const zhTagStyles: Record<string, { bg: string; color: string }> = {
-  活動: { bg: 'var(--color-orange-accent)', color: 'white' },
-  課程: { bg: 'var(--color-green-light)', color: 'var(--color-green-dark)' },
-  公告: { bg: '#EFF6FF', color: '#2563EB' },
-}
-
-const enTagStyles: Record<string, { bg: string; color: string }> = {
-  Event: { bg: 'var(--color-orange-accent)', color: 'white' },
-  Course: { bg: 'var(--color-green-light)', color: 'var(--color-green-dark)' },
-  Notice: { bg: '#EFF6FF', color: '#2563EB' },
-}
 
 export default async function NewsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'news_page' })
-
-  const newsItems = locale === 'zh-TW' ? zhNewsItems : enNewsItems
-  const tagStyles = locale === 'zh-TW' ? zhTagStyles : enTagStyles
+  const t = await getTranslations({ locale, namespace: 'news' })
+  const posts = locale === 'zh-TW' ? zhPosts : enPosts
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <SectionHeading title={t('title')} subtitle={t('subtitle')} />
-      <div className="flex flex-col gap-5">
-        {newsItems.map((item) => (
-          <div key={item.id} className="bg-white border border-[var(--color-green-light)] rounded-2xl p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-2">
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full"
-                style={{ backgroundColor: tagStyles[item.tag]?.bg, color: tagStyles[item.tag]?.color }}
-              >
-                {item.tag}
-              </span>
-              <span className="text-xs text-gray-400">{item.date}</span>
-            </div>
-            <h3 className="font-bold text-[var(--color-green-dark)] mb-1">{item.title}</h3>
-            <p className="text-sm text-[var(--color-green-mid)]">{item.excerpt}</p>
+    <div style={{ background: 'var(--color-zen-paper)' }}>
+      <div className="max-w-3xl mx-auto px-6 py-20">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="mb-6 flex justify-center">
+            <ZenStamp size="lg">最新</ZenStamp>
           </div>
-        ))}
+          <h1 className="zen-display mb-6" style={{ fontSize: 'clamp(40px, 6vw, 64px)', color: 'var(--color-green-ink)' }}>
+            {t('title')}
+          </h1>
+          <div className="flex justify-center mb-6">
+            <ZenLine width={48} />
+          </div>
+          <p className="text-sm" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.15em' }}>
+            {locale === 'zh-TW' ? '社區動態 · 課程公告 · 活動紀錄' : 'Community · Courses · Events'}
+          </p>
+        </div>
+
+        {/* Posts list */}
+        <div style={{ borderTop: '1px solid var(--color-green-ink)' }}>
+          {posts.map((p) => (
+            <Link
+              key={p.slug}
+              href={`/${locale}/news/${p.slug}`}
+              className="group block py-10 transition-opacity hover:opacity-75"
+              style={{ borderBottom: '1px solid var(--color-zen-rule)' }}
+            >
+              <div className="grid grid-cols-12 gap-6 items-start">
+                {/* 日期欄 */}
+                <div className="col-span-12 md:col-span-3">
+                  <p className="zen-serif" style={{ fontSize: 14, color: 'var(--color-zen-stamp)', letterSpacing: '0.15em' }}>
+                    {p.date}
+                  </p>
+                  <p className="text-xs mt-2" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.2em' }}>
+                    · {p.cat} ·
+                  </p>
+                </div>
+
+                {/* 內容欄 */}
+                <div className="col-span-12 md:col-span-9">
+                  <h2
+                    className="zen-title mb-3"
+                    style={{ fontSize: 18, color: 'var(--color-green-ink)', lineHeight: 1.6 }}
+                  >
+                    {p.title}
+                  </h2>
+                  <p className="text-sm leading-loose mb-4" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)' }}>
+                    {p.excerpt}
+                  </p>
+                  <span
+                    className="inline-block text-xs"
+                    style={{
+                      color: 'var(--color-zen-stamp)',
+                      fontFamily: 'var(--font-serif)',
+                      letterSpacing: '0.25em',
+                      borderBottom: '1px solid var(--color-zen-stamp)',
+                      paddingBottom: 2,
+                    }}
+                  >
+                    {locale === 'zh-TW' ? '閱讀全文 →' : 'READ MORE →'}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* 底部禪語 */}
+        <div className="text-center mt-24 mb-8">
+          <p className="zen-display" style={{ fontSize: 20, color: 'var(--color-green-mid)', letterSpacing: '0.2em' }}>
+            {locale === 'zh-TW' ? '日日是好日' : 'Every day a good day'}
+          </p>
+        </div>
       </div>
     </div>
   )
