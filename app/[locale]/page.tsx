@@ -4,6 +4,7 @@ import ProductsPreview from '@/components/home/ProductsPreview'
 import ToyExchangeHighlight from '@/components/home/ToyExchangeHighlight'
 import IdleExchangeHighlight from '@/components/home/IdleExchangeHighlight'
 import GreenCoinHighlight from '@/components/home/GreenCoinHighlight'
+import MembershipCta from '@/components/home/MembershipCta'
 import NewsPreview from '@/components/home/NewsPreview'
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <ToyExchangeHighlight />
       <IdleExchangeHighlight />
       <GreenCoinHighlight />
+      <MembershipCta />
       <NewsPreview />
     </>
   )

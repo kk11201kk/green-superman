@@ -6,6 +6,7 @@
     "toyExchange": "玩具交換",
     "idleExchange": "閒置交換",
     "wellness": "心靈課程",
+    "membership": "加入會員",
     "news": "最新消息",
     "portal": "會員入口",
     "lang": "EN",
@@ -37,6 +38,19 @@
     "step2": "現場衛生核驗",
     "step3": "綠幣即時入帳",
     "cta": "查看交換規則 →"
+  },
+  "membership": {
+    "badge": "會員方案",
+    "heroTitle": "加入綠超人，成為改變的一份子",
+    "heroSubtitle": "每年 NT$3,600，解鎖全部會員服務——折扣、綠幣、課程、交換，讓環保成為你的日常與資產。",
+    "heroCta": "立即透過 LINE 申請",
+    "planLabel": "年費會員方案",
+    "pricingCta": "立即加入",
+    "earlyBird": "早鳥優惠進行中，詳情請洽 LINE",
+    "benefitsTitle": "會員專屬權益",
+    "howToJoinTitle": "如何加入",
+    "bottomCtaTitle": "準備好了嗎？",
+    "bottomCtaDesc": "加入我們，讓每一天的選擇，都成為對地球、對自己、對社區的善意投票。"
   },
   "idleExchange": {
     "badge": "特色服務",

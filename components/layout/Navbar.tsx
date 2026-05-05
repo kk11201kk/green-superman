@@ -19,7 +19,7 @@ export default function Navbar() {
     { href: '/toy-exchange', label: t('toyExchange') },
     { href: '/idle-exchange', label: t('idleExchange') },
     { href: '/wellness', label: t('wellness') },
-    { href: '/services', label: t('services') },
+    { href: '/membership', label: t('membership') },
     { href: '/news', label: t('news') },
     { href: '/contact', label: t('contact') },
   ]

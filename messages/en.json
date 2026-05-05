@@ -6,6 +6,7 @@
     "toyExchange": "Toy Exchange",
     "idleExchange": "Resource Exchange",
     "wellness": "Wellness",
+    "membership": "Join Us",
     "news": "News",
     "portal": "Member Portal",
     "lang": "中文",
@@ -37,6 +38,19 @@
     "step2": "On-site hygiene check",
     "step3": "G-Coins credited instantly",
     "cta": "View Exchange Rules →"
+  },
+  "membership": {
+    "badge": "Membership Plan",
+    "heroTitle": "Join Greenman — Be Part of the Change",
+    "heroSubtitle": "NT$3,600/year unlocks all member services — discounts, G-Coins, courses, and exchanges. Make eco-living your daily habit and asset.",
+    "heroCta": "Apply via LINE",
+    "planLabel": "Annual Membership",
+    "pricingCta": "Join Now",
+    "earlyBird": "Early-bird pricing available — contact us via LINE",
+    "benefitsTitle": "Member Benefits",
+    "howToJoinTitle": "How to Join",
+    "bottomCtaTitle": "Ready to Start?",
+    "bottomCtaDesc": "Join us and let every daily choice become a vote for the earth, yourself, and your community."
   },
   "idleExchange": {
     "badge": "Featured Service",
