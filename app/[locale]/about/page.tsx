@@ -48,24 +48,30 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <SectionHeading title={t('visionTitle')} center />
 
         {/* 引言 */}
-        <p className="text-center text-lg font-semibold mb-10" style={{ color: 'var(--color-green-primary)' }}>
+        <p className="text-center text-lg font-semibold mb-14 italic" style={{ color: 'var(--color-green-primary)' }}>
           {t('visionLead')}
         </p>
 
+        <hr style={{ borderColor: 'var(--color-green-light)' }} className="mb-14" />
+
         {/* 主文 */}
-        <div
-          className="rounded-3xl p-8 md:p-12 mb-14 border"
-          style={{ background: 'var(--color-green-pale)', borderColor: 'var(--color-green-light)' }}
-        >
-          {t('visionBody').split('\n\n').map((para, i) => (
-            <p
-              key={i}
-              className={`text-base leading-loose mb-5 last:mb-0 ${i === 1 ? 'text-xl font-bold' : ''}`}
-              style={{ color: i === 1 ? 'var(--color-green-dark)' : 'var(--color-green-mid)' }}
-            >
-              {para}
-            </p>
-          ))}
+        <div className="mb-14 space-y-0">
+          {t('visionBody').split('\n\n').map((para, i) => {
+            if (i === 1) {
+              return (
+                <div key={i} className="py-10 text-center">
+                  <p className="text-2xl md:text-3xl font-black leading-snug" style={{ color: 'var(--color-green-dark)' }}>
+                    {para}
+                  </p>
+                </div>
+              )
+            }
+            return (
+              <p key={i} className="text-base leading-relaxed mb-8 last:mb-0" style={{ color: 'var(--color-green-mid)' }}>
+                {para}
+              </p>
+            )
+          })}
         </div>
 
         {/* 三大支柱 */}
