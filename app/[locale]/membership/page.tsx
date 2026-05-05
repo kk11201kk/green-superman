@@ -112,30 +112,31 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
         {/* ── Pricing Card ── */}
         <div className="flex justify-center mb-16">
           <div
-            className="rounded-3xl p-10 text-center border-2 shadow-lg w-full max-w-sm"
+            className="rounded-3xl px-10 py-10 text-center border-2 shadow-lg w-full max-w-md"
             style={{ borderColor: 'var(--color-green-primary)', background: 'white' }}
           >
-            <p className="text-xs uppercase tracking-widest font-semibold mb-3" style={{ color: 'var(--color-green-mid)' }}>
+            <p className="text-xs uppercase tracking-widest font-semibold mb-6" style={{ color: 'var(--color-green-mid)' }}>
               {t('planLabel')}
             </p>
-            <div className="flex items-end justify-center gap-1 mb-2">
-              <span className="text-xl font-bold" style={{ color: 'var(--color-green-dark)' }}>NT$</span>
-              <span className="text-6xl font-black leading-none" style={{ color: 'var(--color-green-primary)' }}>3,600</span>
-              <span className="text-base font-semibold mb-1" style={{ color: 'var(--color-green-mid)' }}>{il.pricingPer}</span>
-            </div>
-            <p className="text-sm mb-6" style={{ color: 'var(--color-green-mid)' }}>
+            <p className="text-6xl font-black leading-none mb-1" style={{ color: 'var(--color-green-primary)' }}>
+              NT$3,600
+            </p>
+            <p className="text-base font-semibold mb-3" style={{ color: 'var(--color-green-mid)' }}>
+              {il.pricingPer}
+            </p>
+            <p className="text-sm mb-8" style={{ color: 'var(--color-green-mid)' }}>
               {il.pricingDesc}
             </p>
             <a
               href="https://line.me"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-xl py-3 text-base font-black text-white transition-opacity hover:opacity-90"
+              className="block rounded-xl py-3.5 text-base font-black text-white transition-opacity hover:opacity-90 mb-3"
               style={{ backgroundColor: 'var(--color-green-primary)' }}
             >
               {t('pricingCta')}
             </a>
-            <p className="text-xs mt-3" style={{ color: 'var(--color-green-mid)' }}>
+            <p className="text-xs" style={{ color: 'var(--color-green-mid)' }}>
               {t('earlyBird')}
             </p>
           </div>
