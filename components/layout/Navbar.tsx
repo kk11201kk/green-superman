@@ -28,7 +28,7 @@ export default function Navbar() {
           <div aria-hidden="true" style={{ background: 'var(--color-green-primary)' }} className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-black text-sm">
             G
           </div>
-          <span style={{ color: 'var(--color-green-dark)' }} className="font-bold text-sm">綠超人環保促進會</span>
+          <span style={{ color: 'var(--color-green-dark)' }} className="font-bold text-sm">Greenman</span>
         </Link>
 
         {/* Mobile: only portal + lang switcher */}

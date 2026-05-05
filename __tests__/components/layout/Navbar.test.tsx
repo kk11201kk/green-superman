@@ -17,7 +17,7 @@ describe('Navbar', () => {
         <Navbar />
       </NextIntlClientProvider>
     )
-    expect(screen.getByText('綠超人環保促進會')).toBeInTheDocument()
+    expect(screen.getByText('Greenman')).toBeInTheDocument()
   })
 
   it('renders toy exchange link', () => {
