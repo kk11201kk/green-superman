@@ -23,9 +23,9 @@ export default function IdleExchangeHighlight() {
         >
           <span className="text-6xl mb-4">♻️</span>
           <p className="text-base font-semibold leading-snug" style={{ color: 'var(--color-green-primary)' }}>
-            登記物品
+            {locale === 'zh-TW' ? '登記物品' : 'Register items'}
             <br />
-            換走綠幣
+            {locale === 'zh-TW' ? '換走綠幣' : 'earn G-Coins'}
           </p>
         </div>
 

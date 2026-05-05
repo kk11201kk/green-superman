@@ -67,7 +67,13 @@
   "greenCoin": {
     "title": "綠幣循環系統",
     "description": "舊物換成綠幣，再用綠幣折抵購物或兌換心靈課程。讓每一件閒置物品都重新流動，成為你的生活資本。",
-    "cta": "立即了解 →"
+    "cta": "立即了解 →",
+    "pageSubtitle": "資源重生的數位貨幣，讓每件閒置物品都有價值",
+    "whatTitle": "什麼是綠幣？",
+    "howToTitle": "以物換物流程",
+    "usageTitle": "綠幣用途",
+    "gcoinUsageNote": "課程可用綠幣（G-Coin）完整兌換或折抵",
+    "lineEnroll": "📱 透過 LINE 報名課程"
   },
   "news": {
     "title": "最新消息"
@@ -100,11 +106,23 @@
   },
   "contact": {
     "title": "聯絡我們",
-    "subtitle": "有任何問題，歡迎透過 LINE 或表單聯繫"
+    "subtitle": "有任何問題，歡迎透過 LINE 或表單聯繫",
+    "locationTitle": "🏪 台南示範據點",
+    "locationAddress": "📍 台南市（詳細地址加入會員後提供）",
+    "locationHours": "🕙 週一至週六 10:00–18:00",
+    "locationClosed": "📵 週日及國定假日公休",
+    "lineButton": "📱 LINE 官方帳號",
+    "onlineTitle": "✉️ 線上詢問",
+    "namePlaceholder": "您的姓名",
+    "emailPlaceholder": "電子郵件",
+    "messagePlaceholder": "詢問內容",
+    "submitButton": "送出詢問"
   },
   "wellness_page": {
     "title": "心靈環保課程",
-    "subtitle": "境隨心轉 — 內在安定是永續生活的起點"
+    "subtitle": "境隨心轉 — 內在安定是永續生活的起點",
+    "gcoinNote": "課程可用綠幣（G-Coin）完整兌換或折抵",
+    "lineEnroll": "📱 透過 LINE 報名課程"
   },
   "portal": {
     "title": "會員入口",

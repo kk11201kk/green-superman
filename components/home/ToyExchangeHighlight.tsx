@@ -95,9 +95,9 @@ export default function ToyExchangeHighlight() {
             className="text-base font-semibold leading-snug"
             style={{ color: 'var(--color-green-primary)' }}
           >
-            帶來舊玩具
+            {locale === 'zh-TW' ? '帶來舊玩具' : 'Bring old toys'}
             <br />
-            換走綠幣
+            {locale === 'zh-TW' ? '換走綠幣' : 'earn G-Coins'}
           </p>
         </div>
       </div>

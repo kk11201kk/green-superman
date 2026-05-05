@@ -67,7 +67,13 @@
   "greenCoin": {
     "title": "G-Coin Circular System",
     "description": "Exchange items for G-Coins, then use them to offset purchases or redeem wellness courses. Every idle item becomes your life capital.",
-    "cta": "Learn More →"
+    "cta": "Learn More →",
+    "pageSubtitle": "The digital currency of resource regeneration — giving value to every idle item",
+    "whatTitle": "What is G-Coin?",
+    "howToTitle": "How to Earn G-Coins",
+    "usageTitle": "How to Use G-Coins",
+    "gcoinUsageNote": "Courses can be fully or partially paid with G-Coins",
+    "lineEnroll": "📱 Enroll via LINE"
   },
   "news": {
     "title": "Latest News"
@@ -100,11 +106,23 @@
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Reach us via LINE or the form below"
+    "subtitle": "Reach us via LINE or the form below",
+    "locationTitle": "🏪 Tainan Demo Outlet",
+    "locationAddress": "📍 Tainan City (address provided upon membership)",
+    "locationHours": "🕙 Mon–Sat 10:00–18:00",
+    "locationClosed": "📵 Closed on Sundays and public holidays",
+    "lineButton": "📱 LINE Official Account",
+    "onlineTitle": "✉️ Online Inquiry",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "Message",
+    "submitButton": "Send"
   },
   "wellness_page": {
     "title": "Wellness Courses",
-    "subtitle": "Inner peace is the foundation of sustainable living"
+    "subtitle": "Inner peace is the foundation of sustainable living",
+    "gcoinNote": "Courses can be fully or partially paid with G-Coins",
+    "lineEnroll": "📱 Enroll via LINE"
   },
   "portal": {
     "title": "Member Portal",

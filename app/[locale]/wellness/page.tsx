@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
 
-const courses = [
+const zhCourses = [
   {
     category: '正念減壓模組',
     emoji: '🧘',
@@ -36,9 +36,46 @@ const courses = [
   },
 ]
 
+const enCourses = [
+  {
+    category: 'Mindfulness Stress Reduction',
+    emoji: '🧘',
+    items: [
+      { name: 'Breath Awareness', desc: 'Guides you to regain focus through breathing in daily life.' },
+      { name: 'Body Scan', desc: 'Relieves muscle tension and physical pain caused by stress.' },
+    ],
+  },
+  {
+    category: 'Emotional Management & Energy Transformation',
+    emoji: '💫',
+    items: [
+      { name: 'Emotional Detox', desc: 'Learn to identify negative emotions and transform anxiety into positive action.' },
+      { name: 'Inner Peace Workshop', desc: 'Explore how inner stability influences external environmental choices.' },
+    ],
+  },
+  {
+    category: 'Natural Therapy & Physical Wellness',
+    emoji: '🌿',
+    items: [
+      { name: 'Qigong Movement', desc: 'Easy-to-learn community qigong and stretching exercises.' },
+      { name: 'Aromatherapy & Sound Therapy', desc: 'Deep relaxation using natural essential oils and frequency waves.' },
+    ],
+  },
+  {
+    category: 'Brainwave Detection & Services',
+    emoji: '🧠',
+    items: [
+      { name: 'Brainwave State Check', desc: 'Professional non-invasive brainwave measurement to understand stress and relaxation levels.' },
+      { name: 'Brainwave Tuning Therapy', desc: 'Guide the brain into optimal recovery frequencies for deep relaxation and focus.' },
+    ],
+  },
+]
+
 export default async function WellnessPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'wellness_page' })
+
+  const courses = locale === 'zh-TW' ? zhCourses : enCourses
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -58,7 +95,7 @@ export default async function WellnessPage({ params }: { params: Promise<{ local
         ))}
       </div>
       <div className="mt-10 bg-[var(--color-green-pale)] border border-[var(--color-green-light)] rounded-2xl p-6 text-center">
-        <p className="text-[var(--color-green-dark)] font-semibold mb-3">課程可用綠幣（G-Coin）完整兌換或折抵</p>
+        <p className="text-[var(--color-green-dark)] font-semibold mb-3">{t('gcoinNote')}</p>
         <a
           href="https://line.me"
           target="_blank"
@@ -66,7 +103,7 @@ export default async function WellnessPage({ params }: { params: Promise<{ local
           className="text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors inline-block"
           style={{ backgroundColor: 'var(--color-green-primary)' }}
         >
-          📱 透過 LINE 報名課程
+          {t('lineEnroll')}
         </a>
       </div>
     </div>
