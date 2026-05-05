@@ -3,11 +3,13 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
 import '../globals.css'
 
 export const metadata: Metadata = {
   title: '綠超人環保促進會 | Green Superman Association',
-  description: '境隨心轉 · 綠色循環 — 數位綠色通路，讓環保成為你的生活方式與收益來源',
+  description: '境隨心轉 · 綠色循環 — 數位綠色通路',
 }
 
 export function generateStaticParams() {
@@ -31,9 +33,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body className="flex flex-col min-h-screen" style={{ background: 'var(--color-green-pale)', color: 'var(--color-green-dark)' }}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
