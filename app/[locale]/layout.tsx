@@ -8,7 +8,7 @@ import Footer from '@/components/layout/Footer'
 import '../globals.css'
 
 export const metadata: Metadata = {
-  title: '綠超人環保促進會 | Green Superman Association',
+  title: '綠超人環保促進會 | Greenman Association',
   description: '境隨心轉 · 綠色循環 — 數位綠色通路',
 }
 

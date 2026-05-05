@@ -4,7 +4,7 @@ import HeroBanner from '@/components/home/HeroBanner'
 
 const messages = {
   hero: {
-    badge: 'Green Superman · 數位綠色通路',
+    badge: 'Greenman · 數位綠色通路',
     title: '境隨心轉 · 綠色循環',
     subtitle: '掌握通路，就是贏家',
     ctaPrimary: '立即加入會員',
