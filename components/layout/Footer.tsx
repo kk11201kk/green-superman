@@ -1,25 +1,19 @@
 'use client'
 import { useTranslations } from 'next-intl'
-import ZenLine from '@/components/ui/ZenLine'
 
 export default function Footer() {
   const t = useTranslations('footer')
+
   return (
-    <footer style={{ background: 'var(--color-green-dark)' }} className="py-10 text-center px-6">
-      <div className="max-w-xs mx-auto mb-5 opacity-30">
-        <ZenLine />
+    <footer className="py-16 px-6 text-center" style={{ background: 'var(--color-green-ink)', color: 'var(--color-zen-paper)' }}>
+      <p className="zen-display mb-6" style={{ fontSize: 28, letterSpacing: '0.15em' }}>境隨心轉</p>
+      <div className="flex justify-center mb-6">
+        <div style={{ height: 1, width: 32, background: 'var(--color-zen-paper)', opacity: 0.3 }} />
       </div>
-      <p
-        className="text-base font-bold mb-3"
-        style={{
-          color: 'var(--color-zen-stamp)',
-          fontFamily: 'var(--font-serif)',
-          letterSpacing: '0.08em',
-        }}
-      >
+      <p className="text-sm mb-3" style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.2em', opacity: 0.85 }}>
         {t('mission')}
       </p>
-      <p className="text-xs" style={{ color: 'var(--color-green-light)', letterSpacing: '0.06em' }}>
+      <p className="text-xs" style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.15em', opacity: 0.55 }}>
         {t('rights')}
       </p>
     </footer>

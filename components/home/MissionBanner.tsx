@@ -1,17 +1,16 @@
 'use client'
 import { useLocale } from 'next-intl'
-import ZenLine from '@/components/ui/ZenLine'
+import ZenLine from '@/components/zen/ZenLine'
 
 const zh = {
-  label: '我們的使命',
+  label: '使命',
   statement: '創造全人類福祉的綠色環保產品',
-  desc: '健康的身心、乾淨的環境、互助的社區——這三者交織而成的美好生活，是綠超人所有行動的起點與終點。',
+  desc: '健康的身心、乾淨的環境、互助的社區——三者交織而成的美好生活。',
 }
-
 const en = {
-  label: 'Our Mission',
-  statement: 'Creating green eco-friendly products for the well-being of all humanity',
-  desc: 'A healthy mind, a clean environment, a supportive community — this is the life every action we take is working toward.',
+  label: 'Mission',
+  statement: 'Creating green eco-products for the well-being of all humanity',
+  desc: 'A healthy mind, a clean environment, a supportive community.',
 }
 
 export default function MissionBanner() {
@@ -19,38 +18,17 @@ export default function MissionBanner() {
   const d = locale === 'zh-TW' ? zh : en
 
   return (
-    <section
-      className="py-16 px-6 text-center"
-      style={{ background: 'var(--color-zen-paper-warm)' }}
-    >
-      <p
-        className="text-xs uppercase font-semibold mb-5"
-        style={{
-          fontFamily: 'var(--font-serif)',
-          color: 'var(--color-zen-stamp)',
-          letterSpacing: '0.3em',
-        }}
-      >
+    <section className="py-24 px-6 text-center" style={{ background: 'var(--color-zen-paper-warm)' }}>
+      <p className="mb-6" style={{ fontSize: 11, letterSpacing: '0.4em', color: 'var(--color-zen-stamp)', fontFamily: 'var(--font-serif)' }}>
         {d.label}
       </p>
-      <div className="max-w-2xl mx-auto mb-5">
-        <ZenLine />
-      </div>
-      <h2
-        className="text-2xl md:text-3xl font-black py-5 max-w-2xl mx-auto"
-        style={{
-          fontFamily: 'var(--font-serif)',
-          color: 'var(--color-green-dark)',
-          letterSpacing: '0.06em',
-          lineHeight: 1.6,
-        }}
-      >
+      <h2 className="zen-display max-w-3xl mx-auto mb-8" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--color-green-ink)', fontWeight: 400 }}>
         {d.statement}
       </h2>
-      <div className="max-w-2xl mx-auto mb-5">
-        <ZenLine />
+      <div className="flex justify-center mb-8">
+        <ZenLine width={48} />
       </div>
-      <p className="text-sm leading-relaxed max-w-xl mx-auto" style={{ color: 'var(--color-green-mid)' }}>
+      <p className="max-w-xl mx-auto text-sm leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.1em' }}>
         {d.desc}
       </p>
     </section>

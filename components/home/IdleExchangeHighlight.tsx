@@ -1,101 +1,49 @@
 'use client'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
-import ZenStamp from '@/components/ui/ZenStamp'
-import ZenLine from '@/components/ui/ZenLine'
+import ZenStamp from '@/components/zen/ZenStamp'
+import ZenLine from '@/components/zen/ZenLine'
 
 export default function IdleExchangeHighlight() {
   const t = useTranslations('idleExchange')
   const locale = useLocale()
-
-  const steps = [
-    { num: 1, label: t('step1') },
-    { num: 2, label: t('step2') },
-    { num: 3, label: t('step3') },
-  ]
+  const steps = [t('step1'), t('step2'), t('step3')]
 
   return (
-    <section className="py-16 px-6" style={{ background: 'var(--color-zen-paper-warm)' }}>
-      <div className="mx-auto max-w-5xl flex flex-col gap-10 md:flex-row-reverse md:items-center md:gap-16">
-
-        {/* Decorative panel */}
-        <div
-          className="flex flex-col items-center justify-center rounded-xl py-12 px-10 text-center flex-shrink-0 w-full md:w-56"
-          style={{
-            background: 'var(--color-zen-paper)',
-            border: '1px solid var(--color-zen-rule)',
-          }}
-        >
-          <span className="text-6xl mb-4">♻️</span>
-          <p
-            className="text-sm font-semibold leading-loose"
-            style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-dark)', letterSpacing: '0.08em' }}
-          >
-            {locale === 'zh-TW' ? '登記物品\n換走綠幣' : 'Register items\nearn G-Coins'}
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1">
-          <div className="mb-5">
-            <ZenStamp rotate={1}>{t('badge')}</ZenStamp>
+    <section className="py-24 px-6" style={{ background: 'var(--color-zen-paper)' }}>
+      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <div className="mb-6">
+            <ZenStamp rotate={2}>閒置交換</ZenStamp>
           </div>
-
-          <h2
-            className="text-3xl font-extrabold mb-4"
-            style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-dark)', letterSpacing: '0.06em' }}
-          >
+          <h2 className="zen-display mb-5" style={{ fontSize: 'clamp(32px, 4.5vw, 48px)', color: 'var(--color-green-ink)' }}>
             {t('title')}
           </h2>
-
-          <ZenLine className="mb-5" />
-
-          <p className="text-base mb-8 leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>
+          <ZenLine width={40} />
+          <p className="mt-6 mb-8 text-sm leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.1em' }}>
             {t('description')}
           </p>
-
-          <div className="flex items-start gap-4 mb-8 flex-wrap">
-            {steps.map((step, idx) => (
-              <div key={step.num} className="flex items-center gap-4">
-                <div className="flex flex-col items-center gap-1.5">
-                  <span
-                    className="flex h-9 w-9 items-center justify-center rounded text-sm font-bold"
-                    style={{
-                      background: 'var(--color-green-dark)',
-                      color: 'var(--color-zen-paper)',
-                      fontFamily: 'var(--font-serif)',
-                    }}
-                  >
-                    {step.num}
-                  </span>
-                  <span
-                    className="text-xs font-medium text-center max-w-[80px]"
-                    style={{ color: 'var(--color-green-mid)' }}
-                  >
-                    {step.label}
-                  </span>
-                </div>
-                {idx < steps.length - 1 && (
-                  <span className="text-base mb-5" style={{ color: 'var(--color-zen-rule)' }}>→</span>
-                )}
-              </div>
-            ))}
-          </div>
-
           <Link
             href={`/${locale}/idle-exchange`}
-            className="inline-block rounded px-6 py-3 text-sm font-semibold transition-opacity hover:opacity-90"
-            style={{
-              background: 'var(--color-green-dark)',
-              color: 'var(--color-zen-paper)',
-              fontFamily: 'var(--font-serif)',
-              letterSpacing: '0.06em',
-            }}
+            className="inline-block text-sm pb-1 transition-opacity hover:opacity-70"
+            style={{ borderBottom: '1px solid var(--color-green-ink)', color: 'var(--color-green-ink)', fontFamily: 'var(--font-serif)', letterSpacing: '0.25em' }}
           >
             {t('cta')}
           </Link>
         </div>
 
+        <ol className="flex flex-col gap-5">
+          {steps.map((s, i) => (
+            <li key={i} className="flex items-baseline gap-5 pb-5" style={{ borderBottom: '1px solid var(--color-zen-rule)' }}>
+              <span className="zen-serif" style={{ fontSize: 32, color: 'var(--color-zen-stamp)', fontWeight: 300, minWidth: 40 }}>
+                {['一', '二', '三'][i]}
+              </span>
+              <span className="text-sm" style={{ color: 'var(--color-green-ink)', fontFamily: 'var(--font-serif)', letterSpacing: '0.15em' }}>
+                {s}
+              </span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )

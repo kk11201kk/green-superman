@@ -1,89 +1,53 @@
 'use client'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
-import ZenEnso from '@/components/ui/ZenEnso'
-import ZenStamp from '@/components/ui/ZenStamp'
+import ZenEnso from '@/components/zen/ZenEnso'
 
 export default function HeroBanner() {
   const t = useTranslations('hero')
   const locale = useLocale()
 
   return (
-    <section
-      className="relative overflow-hidden py-28 px-6 text-center"
-      style={{ background: 'var(--color-green-dark)' }}
-    >
-      {/* Background ensō decorations */}
-      <div className="absolute top-8 left-8 pointer-events-none">
-        <ZenEnso size={140} opacity={0.07} />
-      </div>
-      <div className="absolute bottom-16 right-12 pointer-events-none">
-        <ZenEnso size={200} opacity={0.05} />
-      </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <ZenEnso size={400} opacity={0.03} />
-      </div>
+    <section className="relative overflow-hidden" style={{ background: 'var(--color-zen-paper)' }}>
+      <ZenEnso size={420} className="absolute -right-20 -top-20" opacity={0.08} />
+      <ZenEnso size={280} className="absolute -left-16 bottom-10" opacity={0.06} />
 
-      {/* Stamp badge */}
-      <div className="flex justify-center mb-8">
-        <ZenStamp rotate={-1} size="lg">{t('badge')}</ZenStamp>
+      <div className="relative max-w-5xl mx-auto px-6 pt-24 pb-32 text-center">
+        <p className="text-[11px] mb-10" style={{ color: 'var(--color-green-mid)', letterSpacing: '0.4em', fontFamily: 'var(--font-serif)' }}>
+          {t('badge')}
+        </p>
+
+        <h1 className="zen-display mb-1" style={{ fontSize: 'clamp(64px, 11vw, 140px)', color: 'var(--color-green-ink)' }}>
+          境隨心轉
+        </h1>
+        <div className="flex justify-center my-6">
+          <div style={{ height: 1, width: 60, background: 'var(--color-zen-rule)' }} />
+        </div>
+        <h2 className="zen-display mb-10" style={{ fontSize: 'clamp(28px, 4vw, 48px)', color: 'var(--color-green-mid)', fontWeight: 400 }}>
+          綠色循環 · 內在富足
+        </h2>
+
+        <p className="max-w-xl mx-auto mb-12 text-base leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.1em' }}>
+          {t('subtitle')}
+        </p>
+
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <Link
+            href={`/${locale}/portal`}
+            className="px-9 py-3.5 text-sm transition-opacity hover:opacity-85"
+            style={{ background: 'var(--color-green-ink)', color: 'var(--color-zen-paper)', fontFamily: 'var(--font-serif)', letterSpacing: '0.25em' }}
+          >
+            {t('ctaPrimary')}
+          </Link>
+          <Link
+            href={`/${locale}/about`}
+            className="px-9 py-3.5 text-sm transition-colors hover:bg-black/5"
+            style={{ border: '1px solid var(--color-green-ink)', color: 'var(--color-green-ink)', fontFamily: 'var(--font-serif)', letterSpacing: '0.25em' }}
+          >
+            {t('ctaSecondary')}
+          </Link>
+        </div>
       </div>
-
-      {/* Title */}
-      <h1
-        className="mb-5 text-4xl md:text-5xl lg:text-6xl font-black text-white"
-        style={{
-          fontFamily: 'var(--font-serif)',
-          letterSpacing: '0.06em',
-          lineHeight: 1.3,
-        }}
-      >
-        {t('title')}
-      </h1>
-
-      {/* Subtitle */}
-      <p
-        className="mx-auto mb-10 max-w-xl text-base md:text-lg"
-        style={{ color: 'var(--color-green-light)', lineHeight: 1.8, letterSpacing: '0.04em' }}
-      >
-        {t('subtitle')}
-      </p>
-
-      {/* CTA Buttons */}
-      <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-        <Link
-          href={`/${locale}/portal`}
-          className="rounded px-7 py-3 text-sm font-semibold transition-opacity hover:opacity-90"
-          style={{
-            backgroundColor: 'var(--color-zen-stamp)',
-            color: 'var(--color-zen-paper)',
-            fontFamily: 'var(--font-serif)',
-            letterSpacing: '0.1em',
-          }}
-        >
-          {t('ctaPrimary')}
-        </Link>
-        <Link
-          href={`/${locale}/about`}
-          className="rounded border px-7 py-3 text-sm font-semibold transition-colors hover:bg-white/10"
-          style={{
-            borderColor: 'var(--color-green-light)',
-            color: 'var(--color-green-light)',
-            letterSpacing: '0.08em',
-          }}
-        >
-          {t('ctaSecondary')}
-        </Link>
-      </div>
-
-      {/* Paper bottom transition */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-12"
-        style={{
-          background: 'var(--color-zen-paper)',
-          clipPath: 'ellipse(55% 100% at 50% 100%)',
-        }}
-      />
     </section>
   )
 }

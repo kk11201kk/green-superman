@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import SectionHeading from '@/components/ui/SectionHeading'
-import ZenStamp from '@/components/ui/ZenStamp'
-import ZenEnso from '@/components/ui/ZenEnso'
+import ZenStamp from '@/components/zen/ZenStamp'
+import ZenEnso from '@/components/zen/ZenEnso'
 
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
