@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import SectionHeading from '@/components/ui/SectionHeading'
 
-const benefits = [
+const zhBenefits = [
   { emoji: '🛍️', title: '嚴選商品會員折扣', desc: '比市價便宜 25–30%，購物省更多' },
   { emoji: '🪙', title: '綠幣儲值與兌換資格', desc: '累積綠幣折抵消費、兌換課程，讓閒置物品變生活資本' },
   { emoji: '🧸', title: '玩具交換服務', desc: '免費參與社區玩具交換，舊玩具換綠幣' },
@@ -14,13 +14,31 @@ const benefits = [
   { emoji: '📰', title: '月刊電子報', desc: '定期收到環保生活提案、健康資訊與社區動態' },
 ]
 
-const steps = [
+const enBenefits = [
+  { emoji: '🛍️', title: 'Curated Product Discounts', desc: '25–30% below market price — save more on every purchase' },
+  { emoji: '🪙', title: 'G-Coin Savings & Redemption', desc: 'Accumulate G-Coins to offset purchases and redeem courses — turn idle items into life capital' },
+  { emoji: '🧸', title: 'Toy Exchange Service', desc: 'Participate in community toy exchange for free — swap old toys for G-Coins' },
+  { emoji: '♻️', title: 'Resource Exchange Service', desc: 'Register any idle item — earn G-Coins instantly upon successful match' },
+  { emoji: '🧘', title: 'Priority Course Registration', desc: 'Members enjoy priority enrollment and course fee discounts' },
+  { emoji: '🧠', title: 'Brainwave Detection Service', desc: 'Professional non-invasive brainwave measurement to understand your stress and relaxation state' },
+  { emoji: '🎵', title: 'Brainwave Therapy Discount', desc: 'Guide the brain into recovery frequencies based on test results — members enjoy preferential pricing' },
+  { emoji: '📣', title: 'Community Event Invitations', desc: 'First access to Greenman community events, workshops, and market notifications' },
+  { emoji: '📰', title: 'Monthly Newsletter', desc: 'Regular eco-living tips, health information, and community updates delivered to you' },
+]
+
+const zhSteps = [
   { num: '1', title: '透過 LINE 聯絡', desc: '加入綠超人官方 LINE，告知欲申請會員資格，工作人員將回覆入會說明。' },
   { num: '2', title: '繳交年費', desc: '確認方案後繳交年費 NT$3,600，可選擇轉帳或現場繳費。' },
   { num: '3', title: '開通帳號 · 開始享受', desc: '工作人員於 24 小時內開通您的會員帳號，綠幣錢包同步啟用。' },
 ]
 
-const faqItems = [
+const enSteps = [
+  { num: '1', title: 'Contact Us via LINE', desc: 'Join the Greenman official LINE account, tell us you\'d like to apply for membership, and staff will reply with instructions.' },
+  { num: '2', title: 'Pay Annual Fee', desc: 'After confirming the plan, pay the NT$3,600 annual fee via bank transfer or in person.' },
+  { num: '3', title: 'Account Activated · Start Enjoying', desc: 'Staff will activate your member account within 24 hours. Your G-Coin wallet will be enabled at the same time.' },
+]
+
+const zhFaq = [
   { q: '年費是多少？', a: 'NT$3,600 / 年（平均每月 NT$300）。正式上線前享有早鳥優惠，詳情請洽 LINE。' },
   { q: '年費含什麼？', a: '所有會員服務資格（嚴選折扣、綠幣儲值、玩具與閒置交換、心靈課程、腦波服務優惠）均包含在內，無隱藏費用。' },
   { q: '年費可以退費嗎？', a: '會員權益啟用後 7 日內如有疑慮可申請退費。7 日後恕不受理，請謹慎評估後入會。' },
@@ -28,9 +46,38 @@ const faqItems = [
   { q: '何時可以登入會員系統？', a: '會員後台系統正在建置中，預計近期上線。開通前仍可享有所有線下服務。' },
 ]
 
+const enFaq = [
+  { q: 'How much is the annual fee?', a: 'NT$3,600 / year (approximately NT$300/month). Early-bird pricing is available before official launch — contact us via LINE for details.' },
+  { q: 'What does the annual fee include?', a: 'All member service access is included — curated discounts, G-Coin savings, toy & resource exchanges, wellness courses, and brainwave service discounts. No hidden fees.' },
+  { q: 'Can I get a refund?', a: 'Refund requests can be made within 7 days of activation. After 7 days, refunds are not available — please consider carefully before joining.' },
+  { q: 'Can a family share one account?', a: 'Currently each account is for one member only. A family plan is in development — stay tuned.' },
+  { q: 'When can I log in to the member system?', a: 'The member backend is under development and will launch soon. All offline services remain fully available in the meantime.' },
+]
+
+const zhInline = {
+  pricingPer: '/年',
+  pricingDesc: '平均每月 NT$300，即可解鎖全部會員權益',
+  faqTitle: '常見問題',
+  existingMember: '已有帳號？',
+  loginLink: '前往登入',
+}
+
+const enInline = {
+  pricingPer: '/yr',
+  pricingDesc: 'Avg. NT$300/month — unlock all member benefits',
+  faqTitle: 'FAQ',
+  existingMember: 'Already a member?',
+  loginLink: 'Log in',
+}
+
 export default async function MembershipPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'membership' })
+
+  const benefits = locale === 'zh-TW' ? zhBenefits : enBenefits
+  const steps = locale === 'zh-TW' ? zhSteps : enSteps
+  const faqItems = locale === 'zh-TW' ? zhFaq : enFaq
+  const il = locale === 'zh-TW' ? zhInline : enInline
 
   return (
     <div>
@@ -74,10 +121,10 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
             <div className="flex items-end justify-center gap-1 mb-2">
               <span className="text-xl font-bold" style={{ color: 'var(--color-green-dark)' }}>NT$</span>
               <span className="text-6xl font-black leading-none" style={{ color: 'var(--color-green-primary)' }}>3,600</span>
-              <span className="text-base font-semibold mb-1" style={{ color: 'var(--color-green-mid)' }}>/年</span>
+              <span className="text-base font-semibold mb-1" style={{ color: 'var(--color-green-mid)' }}>{il.pricingPer}</span>
             </div>
             <p className="text-sm mb-6" style={{ color: 'var(--color-green-mid)' }}>
-              平均每月 <strong style={{ color: 'var(--color-green-dark)' }}>NT$300</strong>，即可解鎖全部會員權益
+              {il.pricingDesc}
             </p>
             <a
               href="https://line.me"
@@ -134,7 +181,7 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
         </div>
 
         {/* ── FAQ ── */}
-        <SectionHeading title="常見問題" center />
+        <SectionHeading title={il.faqTitle} center />
         <div className="flex flex-col gap-3 mb-16">
           {faqItems.map((item) => (
             <details
@@ -169,9 +216,9 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
             📱 {t('heroCta')}
           </a>
           <p className="mt-4 text-xs" style={{ color: 'var(--color-green-light)' }}>
-            已有帳號？{' '}
+            {il.existingMember}{' '}
             <Link href={`/${locale}/portal`} className="underline hover:opacity-80">
-              前往登入
+              {il.loginLink}
             </Link>
           </p>
         </div>
