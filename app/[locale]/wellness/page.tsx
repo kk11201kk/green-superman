@@ -26,6 +26,14 @@ const courses = [
       { name: '香療與音療', desc: '利用天然精油與頻率波長達成深度放鬆。' },
     ],
   },
+  {
+    category: '腦波檢測與腦波服務',
+    emoji: '🧠',
+    items: [
+      { name: '腦波狀態檢測', desc: '透過專業設備量測個人腦波頻率，了解當下身心壓力與放鬆狀態。' },
+      { name: '腦波調頻療程', desc: '依據檢測結果，運用頻率音頻引導大腦進入最佳修復波段，促進深度放鬆與專注力提升。' },
+    ],
+  },
 ]
 
 export default async function WellnessPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -35,7 +43,7 @@ export default async function WellnessPage({ params }: { params: Promise<{ local
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <SectionHeading title={t('title')} subtitle={t('subtitle')} />
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         {courses.map((cat) => (
           <div key={cat.category} className="bg-white border border-[var(--color-green-light)] rounded-2xl p-5 shadow-sm">
             <div className="text-3xl mb-2">{cat.emoji}</div>
