@@ -1,13 +1,12 @@
 import { getTranslations } from 'next-intl/server'
-import SectionHeading from '@/components/ui/SectionHeading'
+import ZenSectionHeading from '@/components/zen/ZenSectionHeading'
 import ZenStamp from '@/components/zen/ZenStamp'
+import ZenLine from '@/components/zen/ZenLine'
 import ZenEnso from '@/components/zen/ZenEnso'
-
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'about' })
-
   const pillars = [
     { title: t('pillar1Title'), desc: t('pillar1Desc') },
     { title: t('pillar2Title'), desc: t('pillar2Desc') },
@@ -15,152 +14,86 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   ]
 
   return (
-    <div>
-      {/* ── Hero ── */}
-      <section
-        className="py-24 px-6 text-center relative overflow-hidden"
-        style={{ background: 'var(--color-green-dark)' }}
-      >
-        <div className="absolute top-6 left-8 pointer-events-none">
-          <ZenEnso size={160} opacity={0.06} />
-        </div>
-        <div className="absolute bottom-8 right-10 pointer-events-none">
-          <ZenEnso size={220} opacity={0.04} />
-        </div>
-
-        <div className="relative">
-          <div className="flex justify-center mb-6">
-            <ZenStamp rotate={-1}>{t('subtitle')}</ZenStamp>
-          </div>
-          <blockquote className="max-w-4xl mx-auto">
-            <p
-              className="text-xl md:text-2xl font-black text-white leading-snug mb-5 whitespace-nowrap"
-              style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.06em' }}
-            >
-              「{t('heroQuote')}」
-            </p>
-            <cite
-              className="text-sm not-italic"
-              style={{ color: 'var(--color-zen-stamp)', fontFamily: 'var(--font-serif)', letterSpacing: '0.1em' }}
-            >
-              {t('heroQuoteAuthor')}
-            </cite>
-          </blockquote>
-        </div>
-
-        {/* Paper bottom transition */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-10"
-          style={{
-            background: 'var(--color-zen-paper)',
-            clipPath: 'ellipse(55% 100% at 50% 100%)',
-          }}
-        />
+    <div style={{ background: 'var(--color-zen-paper)' }}>
+      {/* Hero 語錄 */}
+      <section className="relative overflow-hidden py-28 px-6 text-center" style={{ background: 'var(--color-zen-paper-warm)' }}>
+        <ZenEnso size={300} className="absolute -right-12 -top-12" opacity={0.08} />
+        <p className="text-[11px] mb-10" style={{ color: 'var(--color-zen-stamp)', letterSpacing: '0.4em', fontFamily: 'var(--font-serif)' }}>
+          {t('subtitle')}
+        </p>
+        <blockquote className="max-w-3xl mx-auto">
+          <p className="zen-display mb-8" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--color-green-ink)', fontWeight: 400, lineHeight: 1.6 }}>
+            「{t('heroQuote')}」
+          </p>
+          <div className="flex justify-center mb-4"><ZenLine width={32} /></div>
+          <cite className="text-xs not-italic" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.25em' }}>
+            {t('heroQuoteAuthor')}
+          </cite>
+        </blockquote>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
-
-        {/* ── 願景 ── */}
-        <SectionHeading title={t('visionTitle')} center />
-
-        <p
-          className="text-center text-lg font-semibold mb-14 italic"
-          style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-primary)', letterSpacing: '0.04em' }}
-        >
+      <div className="max-w-3xl mx-auto px-6 py-20">
+        <ZenSectionHeading stamp="願景" title={t('visionTitle')} center />
+        <p className="text-center mb-14 zen-display" style={{ fontSize: 22, color: 'var(--color-green-mid)', fontWeight: 400, letterSpacing: '0.1em', lineHeight: 1.8 }}>
           {t('visionLead')}
         </p>
 
-        <hr style={{ borderColor: 'var(--color-zen-rule)' }} className="mb-14" />
-
-        <div className="mb-14 space-y-0">
+        <div className="mb-16 space-y-6">
           {t('visionBody').split('\n\n').map((para, i) => {
             if (i === 1) {
               return (
-                <div key={i} className="py-10 text-center">
-                  <p
-                    className="text-2xl md:text-3xl font-black leading-snug"
-                    style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-dark)', letterSpacing: '0.06em' }}
-                  >
+                <div key={i} className="py-12 text-center">
+                  <p className="zen-display" style={{ fontSize: 'clamp(24px, 3.5vw, 36px)', color: 'var(--color-green-ink)', fontWeight: 400, letterSpacing: '0.08em', lineHeight: 1.6 }}>
                     {para}
                   </p>
                 </div>
               )
             }
             return (
-              <p key={i} className="text-base leading-relaxed mb-8 last:mb-0" style={{ color: 'var(--color-green-mid)' }}>
+              <p key={i} className="text-base leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.05em' }}>
                 {para}
               </p>
             )
           })}
         </div>
 
-        {/* 三大支柱 */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {pillars.map((p) => (
-            <div
-              key={p.title}
-              className="rounded-xl p-6 border"
-              style={{ background: 'var(--color-zen-paper-warm)', borderColor: 'var(--color-zen-rule)' }}
-            >
-              <h3
-                className="font-black text-base mb-3"
-                style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-dark)', letterSpacing: '0.06em' }}
-              >
-                {p.title}
+        {/* 三大支柱 — 直書感編號 */}
+        <div className="grid md:grid-cols-3 gap-px mb-20" style={{ background: 'var(--color-zen-rule)' }}>
+          {pillars.map((p, i) => (
+            <div key={p.title} className="p-8" style={{ background: 'var(--color-zen-paper)' }}>
+              <div className="zen-serif mb-4" style={{ fontSize: 32, color: 'var(--color-zen-stamp)', fontWeight: 300 }}>
+                {['壹', '貳', '參'][i]}
+              </div>
+              <h3 className="zen-title mb-4" style={{ fontSize: 16, color: 'var(--color-green-ink)' }}>
+                {p.title.replace(/^[🌱💛🤝]\s*/, '')}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>
+              <p className="text-sm leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.05em' }}>
                 {p.desc}
               </p>
             </div>
           ))}
         </div>
 
-        {/* ── 核心使命 ── */}
-        <SectionHeading title={t('missionTitle')} center />
-
-        {/* 使命宣言 */}
-        <div
-          className="rounded-2xl px-8 py-10 mb-6 text-center relative overflow-hidden"
-          style={{ background: 'var(--color-green-dark)' }}
-        >
-          <div className="absolute -right-6 -top-6 pointer-events-none">
-            <ZenEnso size={120} opacity={0.07} />
-          </div>
-          <div className="relative">
-            <p
-              className="text-xs uppercase tracking-widest font-semibold mb-4"
-              style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-zen-stamp)', letterSpacing: '0.25em' }}
-            >
-              {t('missionTag')}
-            </p>
-            <p
-              className="text-2xl md:text-3xl font-black text-white"
-              style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.06em' }}
-            >
-              {t('missionStatement')}
-            </p>
-          </div>
+        {/* 核心使命 */}
+        <ZenSectionHeading stamp="使命" title={t('missionTitle')} center />
+        <div className="px-8 py-14 mb-8 text-center" style={{ background: 'var(--color-green-ink)', color: 'var(--color-zen-paper)' }}>
+          <p className="text-[11px] mb-6" style={{ letterSpacing: '0.4em', opacity: 0.7, fontFamily: 'var(--font-serif)' }}>
+            {t('missionTag')}
+          </p>
+          <p className="zen-display" style={{ fontSize: 'clamp(24px, 3.5vw, 36px)', letterSpacing: '0.1em', lineHeight: 1.5 }}>
+            {t('missionStatement')}
+          </p>
         </div>
-
-        <div
-          className="rounded-xl p-8 mb-6 border"
-          style={{ background: 'var(--color-zen-paper-warm)', borderColor: 'var(--color-zen-rule)' }}
-        >
-          <p className="text-base leading-loose" style={{ color: 'var(--color-green-mid)' }}>
+        <div className="p-8 mb-8" style={{ borderTop: '1px solid var(--color-zen-rule)', borderBottom: '1px solid var(--color-zen-rule)' }}>
+          <p className="text-base leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.05em' }}>
             {t('mission')}
           </p>
         </div>
-
-        {/* 結尾宣言 */}
         <div className="text-center py-10">
-          <p
-            className="text-xl md:text-2xl font-black"
-            style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-primary)', letterSpacing: '0.06em' }}
-          >
+          <p className="zen-display" style={{ fontSize: 'clamp(22px, 3vw, 32px)', color: 'var(--color-zen-stamp)', fontWeight: 400, letterSpacing: '0.1em' }}>
             {t('closingStatement')}
           </p>
         </div>
-
       </div>
     </div>
   )

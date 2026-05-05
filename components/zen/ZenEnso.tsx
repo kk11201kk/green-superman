@@ -1,10 +1,13 @@
+import { CSSProperties } from 'react'
+
 interface ZenEnsoProps {
   size?: number
   opacity?: number
   className?: string
+  style?: CSSProperties
 }
 
-export default function ZenEnso({ size = 80, opacity = 0.12, className = '' }: ZenEnsoProps) {
+export default function ZenEnso({ size = 80, opacity = 0.12, className = '', style }: ZenEnsoProps) {
   return (
     <svg
       width={size}
@@ -12,7 +15,7 @@ export default function ZenEnso({ size = 80, opacity = 0.12, className = '' }: Z
       viewBox="0 0 100 100"
       fill="none"
       className={className}
-      style={{ opacity }}
+      style={{ opacity, ...style }}
       aria-hidden="true"
     >
       <path

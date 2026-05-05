@@ -1,229 +1,190 @@
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
-import SectionHeading from '@/components/ui/SectionHeading'
+import ZenSectionHeading from '@/components/zen/ZenSectionHeading'
+import ZenStamp from '@/components/zen/ZenStamp'
+import ZenLine from '@/components/zen/ZenLine'
 
 const zhBenefits = [
-  { emoji: '🛍️', title: '嚴選商品會員折扣', desc: '比市價便宜 25–30%，購物省更多' },
-  { emoji: '🪙', title: '綠幣儲值與兌換資格', desc: '累積綠幣折抵消費、兌換課程，讓閒置物品變生活資本' },
-  { emoji: '🧸', title: '玩具交換服務', desc: '免費參與社區玩具交換，舊玩具換綠幣' },
-  { emoji: '♻️', title: '閒置資源交換服務', desc: '登記任何閒置物品，媒合成功即入帳綠幣' },
-  { emoji: '🧘', title: '心靈課程優先報名', desc: '會員享有優先選課資格及課程費用折扣' },
-  { emoji: '🧠', title: '腦波檢測服務', desc: '專業非侵入式腦波量測，了解身心壓力狀態' },
-  { emoji: '🎵', title: '腦波調頻療程優惠', desc: '依檢測結果引導大腦進入修復波段，會員享優惠價' },
-  { emoji: '📣', title: '社區活動邀請', desc: '第一手收到綠超人社區活動、工作坊、市集通知' },
-  { emoji: '📰', title: '月刊電子報', desc: '定期收到環保生活提案、健康資訊與社區動態' },
+  { title: '嚴選商品會員折扣', desc: '比市價便宜 25–30%' },
+  { title: '綠幣儲值與兌換', desc: '閒置物品變生活資本' },
+  { title: '玩具交換服務', desc: '免費參與，舊玩具換綠幣' },
+  { title: '閒置資源交換', desc: '媒合成功即入帳綠幣' },
+  { title: '心靈課程優先報名', desc: '優先選課與費用折扣' },
+  { title: '腦波檢測服務', desc: '了解身心壓力狀態' },
+  { title: '腦波調頻療程優惠', desc: '會員享優惠價格' },
+  { title: '社區活動邀請', desc: '工作坊、市集第一手通知' },
+  { title: '月刊電子報', desc: '環保生活提案與社區動態' },
 ]
-
 const enBenefits = [
-  { emoji: '🛍️', title: 'Curated Product Discounts', desc: '25–30% below market price — save more on every purchase' },
-  { emoji: '🪙', title: 'G-Coin Savings & Redemption', desc: 'Accumulate G-Coins to offset purchases and redeem courses — turn idle items into life capital' },
-  { emoji: '🧸', title: 'Toy Exchange Service', desc: 'Participate in community toy exchange for free — swap old toys for G-Coins' },
-  { emoji: '♻️', title: 'Resource Exchange Service', desc: 'Register any idle item — earn G-Coins instantly upon successful match' },
-  { emoji: '🧘', title: 'Priority Course Registration', desc: 'Members enjoy priority enrollment and course fee discounts' },
-  { emoji: '🧠', title: 'Brainwave Detection Service', desc: 'Professional non-invasive brainwave measurement to understand your stress and relaxation state' },
-  { emoji: '🎵', title: 'Brainwave Therapy Discount', desc: 'Guide the brain into recovery frequencies based on test results — members enjoy preferential pricing' },
-  { emoji: '📣', title: 'Community Event Invitations', desc: 'First access to Greenman community events, workshops, and market notifications' },
-  { emoji: '📰', title: 'Monthly Newsletter', desc: 'Regular eco-living tips, health information, and community updates delivered to you' },
+  { title: 'Curated Discounts', desc: '25–30% below market' },
+  { title: 'G-Coin Savings', desc: 'Idle items become capital' },
+  { title: 'Toy Exchange', desc: 'Free, swap for G-Coins' },
+  { title: 'Resource Exchange', desc: 'Earn G-Coins on match' },
+  { title: 'Priority Courses', desc: 'Priority enrollment & discount' },
+  { title: 'Brainwave Detection', desc: 'Stress & relaxation check' },
+  { title: 'Therapy Discount', desc: 'Member preferential pricing' },
+  { title: 'Event Invitations', desc: 'First access to workshops' },
+  { title: 'Monthly Newsletter', desc: 'Eco tips & community news' },
 ]
-
 const zhSteps = [
-  { num: '1', title: '透過 LINE 聯絡', desc: '加入綠超人官方 LINE，告知欲申請會員資格，工作人員將回覆入會說明。' },
-  { num: '2', title: '繳交年費', desc: '確認方案後繳交年費 NT$3,600，可選擇轉帳或現場繳費。' },
-  { num: '3', title: '開通帳號 · 開始享受', desc: '工作人員於 24 小時內開通您的會員帳號，綠幣錢包同步啟用。' },
+  { title: '透過 LINE 聯絡', desc: '加入官方帳號，告知欲申請會員資格' },
+  { title: '繳交年費', desc: '確認方案後繳交 NT$3,600 年費' },
+  { title: '開通帳號', desc: '24 小時內開通，綠幣錢包同步啟用' },
 ]
-
 const enSteps = [
-  { num: '1', title: 'Contact Us via LINE', desc: 'Join the Greenman official LINE account, tell us you\'d like to apply for membership, and staff will reply with instructions.' },
-  { num: '2', title: 'Pay Annual Fee', desc: 'After confirming the plan, pay the NT$3,600 annual fee via bank transfer or in person.' },
-  { num: '3', title: 'Account Activated · Start Enjoying', desc: 'Staff will activate your member account within 24 hours. Your G-Coin wallet will be enabled at the same time.' },
+  { title: 'Contact via LINE', desc: 'Join official LINE & request membership' },
+  { title: 'Pay Annual Fee', desc: 'Confirm plan, pay NT$3,600' },
+  { title: 'Account Activated', desc: 'Within 24 hours, G-Coin wallet enabled' },
 ]
-
 const zhFaq = [
-  { q: '年費是多少？', a: 'NT$3,600 / 年（平均每月 NT$300）。正式上線前享有早鳥優惠，詳情請洽 LINE。' },
-  { q: '年費含什麼？', a: '所有會員服務資格（嚴選折扣、綠幣儲值、玩具與閒置交換、心靈課程、腦波服務優惠）均包含在內，無隱藏費用。' },
-  { q: '年費可以退費嗎？', a: '會員權益啟用後 7 日內如有疑慮可申請退費。7 日後恕不受理，請謹慎評估後入會。' },
-  { q: '可以家庭共用嗎？', a: '目前每帳號僅適用一位會員本人，家庭方案規劃中，敬請期待。' },
-  { q: '何時可以登入會員系統？', a: '會員後台系統正在建置中，預計近期上線。開通前仍可享有所有線下服務。' },
+  { q: '年費是多少？', a: 'NT$3,600 / 年（平均每月 NT$300）。' },
+  { q: '年費含什麼？', a: '所有會員服務資格均包含在內，無隱藏費用。' },
+  { q: '年費可以退費嗎？', a: '會員權益啟用後 7 日內如有疑慮可申請退費。' },
+  { q: '可以家庭共用嗎？', a: '目前每帳號僅適用一位會員本人，家庭方案規劃中。' },
+  { q: '何時可以登入會員系統？', a: '會員後台系統正在建置中，預計近期上線。' },
 ]
-
 const enFaq = [
-  { q: 'How much is the annual fee?', a: 'NT$3,600 / year (approximately NT$300/month). Early-bird pricing is available before official launch — contact us via LINE for details.' },
-  { q: 'What does the annual fee include?', a: 'All member service access is included — curated discounts, G-Coin savings, toy & resource exchanges, wellness courses, and brainwave service discounts. No hidden fees.' },
-  { q: 'Can I get a refund?', a: 'Refund requests can be made within 7 days of activation. After 7 days, refunds are not available — please consider carefully before joining.' },
-  { q: 'Can a family share one account?', a: 'Currently each account is for one member only. A family plan is in development — stay tuned.' },
-  { q: 'When can I log in to the member system?', a: 'The member backend is under development and will launch soon. All offline services remain fully available in the meantime.' },
+  { q: 'How much is the annual fee?', a: 'NT$3,600 / year (~NT$300/month).' },
+  { q: 'What does it include?', a: 'All member services included, no hidden fees.' },
+  { q: 'Can I get a refund?', a: 'Within 7 days of activation.' },
+  { q: 'Family plan?', a: 'Currently single-member; family plan in development.' },
+  { q: 'When can I log in?', a: 'Member backend launching soon.' },
 ]
-
-const zhInline = {
-  pricingPer: '/年',
-  pricingDesc: '平均每月 NT$300，即可解鎖全部會員權益',
-  faqTitle: '常見問題',
-  existingMember: '已有帳號？',
-  loginLink: '前往登入',
-}
-
-const enInline = {
-  pricingPer: '/yr',
-  pricingDesc: 'Avg. NT$300/month — unlock all member benefits',
-  faqTitle: 'FAQ',
-  existingMember: 'Already a member?',
-  loginLink: 'Log in',
-}
 
 export default async function MembershipPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'membership' })
-
   const benefits = locale === 'zh-TW' ? zhBenefits : enBenefits
   const steps = locale === 'zh-TW' ? zhSteps : enSteps
-  const faqItems = locale === 'zh-TW' ? zhFaq : enFaq
-  const il = locale === 'zh-TW' ? zhInline : enInline
+  const faq = locale === 'zh-TW' ? zhFaq : enFaq
+  const stepNums = locale === 'zh-TW' ? ['一', '二', '三'] : ['1', '2', '3']
+  const benNums = locale === 'zh-TW'
+    ? ['一', '二', '三', '四', '五', '六', '七', '八', '九']
+    : ['01', '02', '03', '04', '05', '06', '07', '08', '09']
 
   return (
-    <div>
-
-      {/* ── Hero ── */}
-      <section
-        className="py-20 px-6 text-center"
-        style={{ background: `linear-gradient(160deg, var(--color-green-dark) 0%, var(--color-green-primary) 100%)` }}
-      >
-        <p className="text-xs uppercase tracking-widest mb-4" style={{ color: 'var(--color-green-light)' }}>
-          {t('badge')}
-        </p>
-        <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
+    <div style={{ background: 'var(--color-zen-paper)' }}>
+      {/* Hero */}
+      <section className="py-24 px-6 text-center" style={{ background: 'var(--color-green-ink)', color: 'var(--color-zen-paper)' }}>
+        <div className="mb-8 flex justify-center">
+          <ZenStamp size="lg">{t('badge')}</ZenStamp>
+        </div>
+        <h1 className="zen-display mb-6" style={{ fontSize: 'clamp(40px, 6vw, 72px)' }}>
           {t('heroTitle')}
         </h1>
-        <p className="text-lg max-w-xl mx-auto mb-10" style={{ color: 'var(--color-green-light)' }}>
+        <div className="flex justify-center mb-8">
+          <div style={{ height: 1, width: 48, background: 'var(--color-zen-paper)', opacity: 0.4 }} />
+        </div>
+        <p className="max-w-xl mx-auto mb-10 text-sm leading-loose" style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.1em', opacity: 0.8 }}>
           {t('heroSubtitle')}
         </p>
         <a
           href="https://line.me"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-xl px-8 py-3.5 text-base font-black transition-opacity hover:opacity-90 shadow-lg"
-          style={{ backgroundColor: 'var(--color-orange-accent)', color: 'var(--color-green-dark)' }}
+          className="inline-block px-9 py-3.5 text-sm transition-opacity hover:opacity-85"
+          style={{ background: 'var(--color-zen-paper)', color: 'var(--color-green-ink)', fontFamily: 'var(--font-serif)', letterSpacing: '0.25em' }}
         >
-          📱 {t('heroCta')}
+          {t('heroCta')}
         </a>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
-
-        {/* ── Pricing Card ── */}
-        <div className="flex justify-center mb-16">
-          <div
-            className="rounded-3xl px-10 py-10 text-center border-2 shadow-lg w-full max-w-md"
-            style={{ borderColor: 'var(--color-green-primary)', background: 'white' }}
-          >
-            <p className="text-xs uppercase tracking-widest font-semibold mb-6" style={{ color: 'var(--color-green-mid)' }}>
-              {t('planLabel')}
-            </p>
-            <p className="text-6xl font-black leading-none mb-1" style={{ color: 'var(--color-green-primary)' }}>
-              NT$3,600
-            </p>
-            <p className="text-base font-semibold mb-3" style={{ color: 'var(--color-green-mid)' }}>
-              {il.pricingPer}
-            </p>
-            <p className="text-sm mb-8" style={{ color: 'var(--color-green-mid)' }}>
-              {il.pricingDesc}
-            </p>
-            <a
-              href="https://line.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-xl py-3.5 text-base font-black text-white transition-opacity hover:opacity-90 mb-3"
-              style={{ backgroundColor: 'var(--color-green-primary)' }}
-            >
-              {t('pricingCta')}
-            </a>
-            <p className="text-xs" style={{ color: 'var(--color-green-mid)' }}>
-              {t('earlyBird')}
-            </p>
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        {/* Pricing */}
+        <div className="text-center mb-20">
+          <p className="text-[11px] mb-6" style={{ color: 'var(--color-zen-stamp)', letterSpacing: '0.4em', fontFamily: 'var(--font-serif)' }}>
+            {t('planLabel')}
+          </p>
+          <div className="zen-display mb-2" style={{ fontSize: 'clamp(64px, 10vw, 120px)', color: 'var(--color-green-ink)', lineHeight: 1 }}>
+            3,600
           </div>
-        </div>
-
-        {/* ── Benefits ── */}
-        <SectionHeading title={t('benefitsTitle')} center />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-          {benefits.map((b) => (
-            <div
-              key={b.title}
-              className="flex gap-4 items-start rounded-2xl p-5 border"
-              style={{ background: 'var(--color-green-pale)', borderColor: 'var(--color-green-light)' }}
-            >
-              <span className="text-2xl flex-shrink-0 mt-0.5">{b.emoji}</span>
-              <div>
-                <p className="font-bold text-sm mb-1" style={{ color: 'var(--color-green-dark)' }}>{b.title}</p>
-                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>{b.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ── How to Join ── */}
-        <SectionHeading title={t('howToJoinTitle')} center />
-        <div className="flex flex-col md:flex-row gap-4 mb-16">
-          {steps.map((s) => (
-            <div
-              key={s.num}
-              className="flex-1 bg-white border rounded-2xl p-5 text-center shadow-sm"
-              style={{ borderColor: 'var(--color-green-light)' }}
-            >
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center font-black text-lg mx-auto mb-3 text-white"
-                style={{ backgroundColor: 'var(--color-green-primary)' }}
-              >
-                {s.num}
-              </div>
-              <h4 className="font-bold mb-2 text-sm" style={{ color: 'var(--color-green-dark)' }}>{s.title}</h4>
-              <p className="text-xs leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>{s.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* ── FAQ ── */}
-        <SectionHeading title={il.faqTitle} center />
-        <div className="flex flex-col gap-3 mb-16">
-          {faqItems.map((item) => (
-            <details
-              key={item.q}
-              className="rounded-2xl border px-6 py-4 bg-white"
-              style={{ borderColor: 'var(--color-green-light)' }}
-            >
-              <summary className="font-semibold text-sm cursor-pointer" style={{ color: 'var(--color-green-dark)' }}>
-                {item.q}
-              </summary>
-              <p className="text-sm mt-3 leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>
-                {item.a}
-              </p>
-            </details>
-          ))}
-        </div>
-
-        {/* ── Bottom CTA ── */}
-        <div
-          className="rounded-3xl p-10 text-center border"
-          style={{ background: `linear-gradient(135deg, var(--color-green-dark) 0%, var(--color-green-primary) 100%)` }}
-        >
-          <p className="text-2xl font-black text-white mb-2">{t('bottomCtaTitle')}</p>
-          <p className="text-sm mb-6" style={{ color: 'var(--color-green-light)' }}>{t('bottomCtaDesc')}</p>
+          <p className="zen-serif mb-8" style={{ fontSize: 14, color: 'var(--color-green-mid)', letterSpacing: '0.3em' }}>NT · 年</p>
+          <div className="flex justify-center mb-8">
+            <ZenLine width={48} />
+          </div>
+          <p className="text-sm mb-10" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.1em' }}>
+            {locale === 'zh-TW' ? '平均每月 NT$300，即可解鎖全部會員權益' : 'Avg. NT$300/month — unlock all member benefits'}
+          </p>
           <a
             href="https://line.me"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-xl px-8 py-3.5 text-base font-black transition-opacity hover:opacity-90 shadow-lg"
-            style={{ backgroundColor: 'var(--color-orange-accent)', color: 'var(--color-green-dark)' }}
+            className="inline-block px-9 py-3.5 text-sm transition-opacity hover:opacity-85"
+            style={{ background: 'var(--color-green-ink)', color: 'var(--color-zen-paper)', fontFamily: 'var(--font-serif)', letterSpacing: '0.25em' }}
           >
-            📱 {t('heroCta')}
+            {t('pricingCta')}
           </a>
-          <p className="mt-4 text-xs" style={{ color: 'var(--color-green-light)' }}>
-            {il.existingMember}{' '}
-            <Link href={`/${locale}/portal`} className="underline hover:opacity-80">
-              {il.loginLink}
-            </Link>
+          <p className="text-xs mt-6" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.15em' }}>
+            {t('earlyBird')}
           </p>
         </div>
 
+        {/* Benefits */}
+        <ZenSectionHeading stamp="權益" title={t('benefitsTitle')} center />
+        <div className="grid md:grid-cols-3 gap-px mb-20" style={{ background: 'var(--color-zen-rule)' }}>
+          {benefits.map((b, i) => (
+            <div key={b.title} className="p-6" style={{ background: 'var(--color-zen-paper)' }}>
+              <div className="zen-serif mb-3" style={{ fontSize: 22, color: 'var(--color-zen-stamp)', fontWeight: 300 }}>
+                {benNums[i]}
+              </div>
+              <p className="zen-title mb-2" style={{ fontSize: 14, color: 'var(--color-green-ink)' }}>{b.title}</p>
+              <p className="text-xs leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.05em' }}>{b.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Steps */}
+        <ZenSectionHeading stamp="加入" title={t('howToJoinTitle')} center />
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {steps.map((s, i) => (
+            <div key={i} className="text-center">
+              <div className="zen-display mb-4" style={{ fontSize: 56, color: 'var(--color-zen-stamp)', fontWeight: 300 }}>
+                {stepNums[i]}
+              </div>
+              <div className="flex justify-center mb-4">
+                <ZenLine width={24} />
+              </div>
+              <p className="zen-title mb-2" style={{ fontSize: 14, color: 'var(--color-green-ink)' }}>{s.title}</p>
+              <p className="text-xs leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.05em' }}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* FAQ */}
+        <ZenSectionHeading stamp="問答" title={locale === 'zh-TW' ? '常見問題' : 'FAQ'} center />
+        <div className="mb-16">
+          {faq.map((f) => (
+            <details key={f.q} className="py-5" style={{ borderBottom: '1px solid var(--color-zen-rule)' }}>
+              <summary className="cursor-pointer text-sm" style={{ color: 'var(--color-green-ink)', fontFamily: 'var(--font-serif)', letterSpacing: '0.1em' }}>
+                {f.q}
+              </summary>
+              <p className="mt-3 text-sm leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)' }}>{f.a}</p>
+            </details>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="px-8 py-14 text-center" style={{ background: 'var(--color-green-ink)', color: 'var(--color-zen-paper)' }}>
+          <p className="zen-display mb-4" style={{ fontSize: 32 }}>{t('bottomCtaTitle')}</p>
+          <p className="text-sm mb-8" style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.1em', opacity: 0.75 }}>
+            {t('bottomCtaDesc')}
+          </p>
+          <a
+            href="https://line.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-9 py-3.5 text-sm transition-opacity hover:opacity-85"
+            style={{ background: 'var(--color-zen-paper)', color: 'var(--color-green-ink)', fontFamily: 'var(--font-serif)', letterSpacing: '0.25em' }}
+          >
+            {t('heroCta')}
+          </a>
+          <p className="mt-6 text-xs" style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.15em', opacity: 0.6 }}>
+            {locale === 'zh-TW' ? '已有帳號？' : 'Have an account? '}
+            <Link href={`/${locale}/portal`} className="underline">
+              {locale === 'zh-TW' ? '前往登入' : 'Sign in'}
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   )

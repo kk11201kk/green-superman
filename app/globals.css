@@ -42,6 +42,12 @@ body {
   letter-spacing: 0.05em;
 }
 
+.zen-title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
 .zen-tracking {
   letter-spacing: 0.2em;
 }
