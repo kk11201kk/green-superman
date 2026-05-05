@@ -18,6 +18,7 @@ export default function Navbar() {
     { href: '/green-coin', label: t('greenCoin') },
     { href: '/toy-exchange', label: t('toyExchange') },
     { href: '/wellness', label: t('wellness') },
+    { href: '/services', label: t('services') },
     { href: '/news', label: t('news') },
     { href: '/contact', label: t('contact') },
   ]

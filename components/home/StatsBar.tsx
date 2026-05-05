@@ -4,8 +4,7 @@ import { useTranslations } from 'next-intl'
 const STATS = [
   { value: '2,000', labelKey: 'members' as const },
   { value: '30%', labelKey: 'discount' as const },
-  { value: '10', labelKey: 'counters' as const },
-  { value: '0.25%', labelKey: 'profit' as const },
+  { value: '600+', labelKey: 'counters' as const },
 ]
 
 export default function StatsBar() {

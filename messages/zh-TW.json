@@ -8,7 +8,8 @@
     "news": "最新消息",
     "portal": "會員入口",
     "lang": "EN",
-    "contact": "聯絡我們"
+    "contact": "聯絡我們",
+    "services": "服務流程"
   },
   "hero": {
     "badge": "Greenman · 數位綠色通路",
@@ -24,7 +25,7 @@
     "profit": "投資者每日分潤"
   },
   "products": {
-    "title": "10 大嚴選專櫃",
+    "title": "嚴選專櫃",
     "subtitle": "去中間化直採，比市價便宜 25-30%"
   },
   "toyExchange": {
