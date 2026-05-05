@@ -1,11 +1,15 @@
 'use client'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
   const t = useTranslations('nav')
   const locale = useLocale()
   const otherLocale = locale === 'zh-TW' ? 'en' : 'zh-TW'
+  const pathname = usePathname()
+
+  const langHref = `/${otherLocale}${(pathname ?? '').replace(/^\/(zh-TW|en)/, '')}`
 
   const links = [
     { href: '/about', label: t('about') },
@@ -14,6 +18,7 @@ export default function Navbar() {
     { href: '/toy-exchange', label: t('toyExchange') },
     { href: '/wellness', label: t('wellness') },
     { href: '/news', label: t('news') },
+    { href: '/contact', label: t('contact') },
   ]
 
   return (
@@ -26,7 +31,22 @@ export default function Navbar() {
           <span style={{ color: 'var(--color-green-dark)' }} className="font-bold text-sm">綠超人環保促進會</span>
         </Link>
 
-        <div className="flex items-center gap-5 text-sm" style={{ color: 'var(--color-green-mid)' }}>
+        {/* Mobile: only portal + lang switcher */}
+        <div className="flex md:hidden items-center gap-3">
+          <Link
+            href={`/${locale}/portal`}
+            style={{ background: 'var(--color-green-primary)', color: '#fff' }}
+            className="px-3 py-1.5 rounded-md font-semibold text-sm"
+          >
+            {t('portal')}
+          </Link>
+          <Link href={langHref} className="text-gray-400 hover:opacity-70 text-sm">
+            {t('lang')}
+          </Link>
+        </div>
+
+        {/* Desktop: full nav */}
+        <div className="hidden md:flex items-center gap-5 text-sm" style={{ color: 'var(--color-green-mid)' }}>
           {links.map((link) => (
             <Link key={link.href} href={`/${locale}${link.href}`} style={{ color: 'inherit' }} className="hover:opacity-70 transition-opacity">
               {link.label}
@@ -39,7 +59,7 @@ export default function Navbar() {
           >
             {t('portal')}
           </Link>
-          <Link href={`/${otherLocale}`} className="text-gray-400 hover:opacity-70">
+          <Link href={langHref} className="text-gray-400 hover:opacity-70">
             {t('lang')}
           </Link>
         </div>

@@ -20,13 +20,12 @@ export default function FAQ({ items }: { items: FAQItem[] }) {
             <span className="text-[var(--color-green-primary)]">{openIndex === i ? '▲' : '▼'}</span>
           </button>
           <div
-            className="px-5 text-sm text-[var(--color-green-mid)] leading-relaxed transition-all"
+            className="px-5 text-sm leading-relaxed"
             style={{
-              maxHeight: openIndex === i ? '200px' : '0',
-              overflow: 'hidden',
+              color: 'var(--color-green-mid)',
               paddingBottom: openIndex === i ? '16px' : '0',
-              visibility: openIndex === i ? 'visible' : 'hidden',
             }}
+            hidden={openIndex !== i}
           >
             {item.a}
           </div>
