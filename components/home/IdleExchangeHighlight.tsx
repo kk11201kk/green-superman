@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
+import ZenStamp from '@/components/ui/ZenStamp'
+import ZenLine from '@/components/ui/ZenLine'
 
 export default function IdleExchangeHighlight() {
   const t = useTranslations('idleExchange')
@@ -13,61 +15,68 @@ export default function IdleExchangeHighlight() {
   ]
 
   return (
-    <section style={{ background: 'var(--color-green-pale)' }} className="py-16 px-4">
+    <section className="py-16 px-6" style={{ background: 'var(--color-zen-paper-warm)' }}>
       <div className="mx-auto max-w-5xl flex flex-col gap-10 md:flex-row-reverse md:items-center md:gap-16">
 
-        {/* Left (visually right on desktop): decorative panel */}
+        {/* Decorative panel */}
         <div
-          className="flex flex-col items-center justify-center rounded-2xl py-12 px-10 text-center flex-shrink-0 w-full md:w-56"
-          style={{ backgroundColor: 'white', border: '2px solid var(--color-green-light)' }}
+          className="flex flex-col items-center justify-center rounded-xl py-12 px-10 text-center flex-shrink-0 w-full md:w-56"
+          style={{
+            background: 'var(--color-zen-paper)',
+            border: '1px solid var(--color-zen-rule)',
+          }}
         >
           <span className="text-6xl mb-4">♻️</span>
-          <p className="text-base font-semibold leading-snug" style={{ color: 'var(--color-green-primary)' }}>
-            {locale === 'zh-TW' ? '登記物品' : 'Register items'}
-            <br />
-            {locale === 'zh-TW' ? '換走綠幣' : 'earn G-Coins'}
+          <p
+            className="text-sm font-semibold leading-loose"
+            style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-dark)', letterSpacing: '0.08em' }}
+          >
+            {locale === 'zh-TW' ? '登記物品\n換走綠幣' : 'Register items\nearn G-Coins'}
           </p>
         </div>
 
-        {/* Right (visually left on desktop): content */}
+        {/* Content */}
         <div className="flex-1">
-          <span
-            className="inline-block rounded-full border px-3 py-1 text-xs font-semibold mb-4"
-            style={{ borderColor: 'var(--color-green-primary)', color: 'var(--color-green-primary)' }}
-          >
-            {t('badge')}
-          </span>
+          <div className="mb-5">
+            <ZenStamp rotate={1}>{t('badge')}</ZenStamp>
+          </div>
 
-          <h2 className="text-3xl font-extrabold mb-3" style={{ color: 'var(--color-green-dark)' }}>
-            <span aria-hidden="true">♻️ </span>
+          <h2
+            className="text-3xl font-extrabold mb-4"
+            style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-green-dark)', letterSpacing: '0.06em' }}
+          >
             {t('title')}
           </h2>
 
-          <p className="text-base mb-8" style={{ color: 'var(--color-green-mid)' }}>
+          <ZenLine className="mb-5" />
+
+          <p className="text-base mb-8 leading-relaxed" style={{ color: 'var(--color-green-mid)' }}>
             {t('description')}
           </p>
 
-          <div className="flex items-center gap-3 mb-8 flex-wrap">
+          <div className="flex items-start gap-4 mb-8 flex-wrap">
             {steps.map((step, idx) => (
-              <div key={step.num} className="flex items-center gap-3">
-                <div className="flex flex-col items-center gap-1">
+              <div key={step.num} className="flex items-center gap-4">
+                <div className="flex flex-col items-center gap-1.5">
                   <span
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white"
-                    style={{ backgroundColor: 'var(--color-green-primary)' }}
+                    className="flex h-9 w-9 items-center justify-center rounded text-sm font-bold"
+                    style={{
+                      background: 'var(--color-green-dark)',
+                      color: 'var(--color-zen-paper)',
+                      fontFamily: 'var(--font-serif)',
+                    }}
                   >
                     {step.num}
                   </span>
                   <span
                     className="text-xs font-medium text-center max-w-[80px]"
-                    style={{ color: 'var(--color-green-dark)' }}
+                    style={{ color: 'var(--color-green-mid)' }}
                   >
                     {step.label}
                   </span>
                 </div>
                 {idx < steps.length - 1 && (
-                  <span className="text-lg font-bold mb-4" style={{ color: 'var(--color-green-light)' }}>
-                    →
-                  </span>
+                  <span className="text-base mb-5" style={{ color: 'var(--color-zen-rule)' }}>→</span>
                 )}
               </div>
             ))}
@@ -75,8 +84,13 @@ export default function IdleExchangeHighlight() {
 
           <Link
             href={`/${locale}/idle-exchange`}
-            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ backgroundColor: 'var(--color-green-primary)' }}
+            className="inline-block rounded px-6 py-3 text-sm font-semibold transition-opacity hover:opacity-90"
+            style={{
+              background: 'var(--color-green-dark)',
+              color: 'var(--color-zen-paper)',
+              fontFamily: 'var(--font-serif)',
+              letterSpacing: '0.06em',
+            }}
           >
             {t('cta')}
           </Link>

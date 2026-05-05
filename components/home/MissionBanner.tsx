@@ -1,5 +1,6 @@
 'use client'
 import { useLocale } from 'next-intl'
+import ZenLine from '@/components/ui/ZenLine'
 
 const zh = {
   label: '我們的使命',
@@ -20,14 +21,35 @@ export default function MissionBanner() {
   return (
     <section
       className="py-16 px-6 text-center"
-      style={{ background: 'var(--color-green-pale)', borderTop: '1px solid var(--color-green-light)', borderBottom: '1px solid var(--color-green-light)' }}
+      style={{ background: 'var(--color-zen-paper-warm)' }}
     >
-      <p className="text-xs uppercase tracking-widest font-semibold mb-4" style={{ color: 'var(--color-green-mid)' }}>
+      <p
+        className="text-xs uppercase font-semibold mb-5"
+        style={{
+          fontFamily: 'var(--font-serif)',
+          color: 'var(--color-zen-stamp)',
+          letterSpacing: '0.3em',
+        }}
+      >
         {d.label}
       </p>
-      <h2 className="text-2xl md:text-3xl font-black mb-5 max-w-2xl mx-auto" style={{ color: 'var(--color-green-dark)' }}>
+      <div className="max-w-2xl mx-auto mb-5">
+        <ZenLine />
+      </div>
+      <h2
+        className="text-2xl md:text-3xl font-black py-5 max-w-2xl mx-auto"
+        style={{
+          fontFamily: 'var(--font-serif)',
+          color: 'var(--color-green-dark)',
+          letterSpacing: '0.06em',
+          lineHeight: 1.6,
+        }}
+      >
         {d.statement}
       </h2>
+      <div className="max-w-2xl mx-auto mb-5">
+        <ZenLine />
+      </div>
       <p className="text-sm leading-relaxed max-w-xl mx-auto" style={{ color: 'var(--color-green-mid)' }}>
         {d.desc}
       </p>

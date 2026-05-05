@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
+import ZenStamp from '@/components/ui/ZenStamp'
+import ZenEnso from '@/components/ui/ZenEnso'
 
 const zh = {
   badge: '會員方案',
@@ -25,40 +27,61 @@ export default function MembershipCta() {
   const d = locale === 'zh-TW' ? zh : en
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6" style={{ background: 'var(--color-zen-paper-warm)' }}>
       <div
-        className="max-w-4xl mx-auto rounded-3xl px-10 py-14 text-center"
-        style={{ background: `linear-gradient(135deg, var(--color-green-dark) 0%, var(--color-green-primary) 100%)` }}
+        className="max-w-4xl mx-auto rounded-2xl px-10 py-14 text-center relative overflow-hidden"
+        style={{ background: 'var(--color-green-dark)' }}
       >
-        <p className="text-xs uppercase tracking-widest font-semibold mb-4" style={{ color: 'var(--color-green-light)' }}>
-          {d.badge}
-        </p>
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-          {d.title}
-        </h2>
-        <p className="text-lg font-black mb-2" style={{ color: 'var(--color-orange-accent)' }}>
-          {d.price}
-        </p>
-        <p className="text-sm max-w-lg mx-auto mb-8" style={{ color: 'var(--color-green-light)' }}>
-          {d.desc}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href={`/${locale}/membership`}
-            className="rounded-xl px-8 py-3.5 text-base font-black transition-opacity hover:opacity-90 shadow-lg"
-            style={{ backgroundColor: 'var(--color-orange-accent)', color: 'var(--color-green-dark)' }}
+        {/* Background ensō */}
+        <div className="absolute -top-8 -right-8 pointer-events-none">
+          <ZenEnso size={200} opacity={0.06} />
+        </div>
+        <div className="absolute -bottom-12 -left-12 pointer-events-none">
+          <ZenEnso size={250} opacity={0.04} />
+        </div>
+
+        <div className="relative">
+          <div className="flex justify-center mb-5">
+            <ZenStamp size="lg" rotate={-1}>{d.badge}</ZenStamp>
+          </div>
+          <h2
+            className="text-3xl md:text-4xl font-black text-white mb-3"
+            style={{ fontFamily: 'var(--font-serif)', letterSpacing: '0.06em' }}
           >
-            {d.learnMore}
-          </Link>
-          <a
-            href="https://line.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-xl px-8 py-3.5 text-base font-semibold border-2 transition-colors hover:bg-white/10"
-            style={{ borderColor: 'var(--color-green-light)', color: 'var(--color-green-light)' }}
+            {d.title}
+          </h2>
+          <p
+            className="text-xl font-black mb-3"
+            style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-zen-stamp)', letterSpacing: '0.08em' }}
           >
-            {d.apply}
-          </a>
+            {d.price}
+          </p>
+          <p className="text-sm max-w-lg mx-auto mb-8 leading-relaxed" style={{ color: 'var(--color-green-light)' }}>
+            {d.desc}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href={`/${locale}/membership`}
+              className="rounded px-8 py-3.5 text-base font-black transition-opacity hover:opacity-90"
+              style={{
+                backgroundColor: 'var(--color-zen-stamp)',
+                color: 'var(--color-zen-paper)',
+                fontFamily: 'var(--font-serif)',
+                letterSpacing: '0.08em',
+              }}
+            >
+              {d.learnMore}
+            </Link>
+            <a
+              href="https://line.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded px-8 py-3.5 text-base font-semibold border transition-colors hover:bg-white/10"
+              style={{ borderColor: 'var(--color-green-light)', color: 'var(--color-green-light)' }}
+            >
+              {d.apply}
+            </a>
+          </div>
         </div>
       </div>
     </section>
