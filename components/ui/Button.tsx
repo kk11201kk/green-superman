@@ -1,12 +1,15 @@
 'use client'
+import type { ReactNode } from 'react'
+
 type Variant = 'primary' | 'outline' | 'accent'
 
 interface ButtonProps {
   variant?: Variant
-  children: React.ReactNode
+  children: ReactNode
   onClick?: () => void
   className?: string
-  type?: 'button' | 'submit'
+  type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
 }
 
 export default function Button({
@@ -15,6 +18,7 @@ export default function Button({
   onClick,
   className = '',
   type = 'button',
+  disabled,
 }: ButtonProps) {
   const base = 'px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors'
   const variants = {
@@ -23,7 +27,7 @@ export default function Button({
     accent: 'bg-[var(--color-orange-accent)] text-white hover:opacity-90',
   }
   return (
-    <button type={type} onClick={onClick} className={`${base} ${variants[variant]} ${className}`}>
+    <button type={type} onClick={onClick} disabled={disabled} className={`${base} ${variants[variant]} ${className}`}>
       {children}
     </button>
   )
