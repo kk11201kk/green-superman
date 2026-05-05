@@ -114,12 +114,13 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   return (
     <div className="max-w-2xl mx-auto px-6 py-12">
 
-      <SectionHeading title="服務流程說明" subtitle="玩具交換 · 腦波檢測 · 腦波調頻療程" center />
+      <SectionHeading title="服務流程說明" subtitle="玩具交換 · 閒置資源交換 · 腦波檢測 · 腦波調頻療程" center />
 
       {/* Quick nav */}
       <div className="flex flex-wrap justify-center gap-2 mb-12">
         {[
           { href: '#toy-exchange',      label: '🪀 玩具交換' },
+          { href: '#idle-exchange',     label: '♻️ 閒置資源交換' },
           { href: '#brainwave-check',   label: '🧠 腦波檢測' },
           { href: '#brainwave-therapy', label: '🎵 腦波療程' },
         ].map(({ href, label }) => (
@@ -165,7 +166,33 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
         </ServiceSection>
 
-        {/* ══ 2. BRAINWAVE DETECTION ══════════════════════════════════════ */}
+        {/* ══ 2. IDLE RESOURCE EXCHANGE ══════════════════════════════════ */}
+        <ServiceSection id="idle-exchange" emoji="♻️" title="閒置資源交換流程" subtitle="讓閒置物品重新流動，換出生活價值">
+
+          <Step n={1} title="登記閒置物品" sub="透過 LINE 或至社區據點填寫物品資訊：名稱、狀態、數量，並上傳照片" />
+          <Step n={2} title="工作人員初步評估" sub="確認物品品質與可交換性，告知預估綠幣換算區間" />
+          <Step n={3} title="物品上架至社區交換平台" sub="審核通過後，物品資訊公開至社區公告板或 LINE 群組，等待有需要的鄰里認領" />
+          <Step n={4} title="媒合成功 · 雙方確認" sub="需求方提出申請後，工作人員協助雙方確認交換條件，安排取件時間與地點" />
+          <Step n={5} title="完成交換 · 綠幣入帳" sub="物品順利移交後，雙方各獲得對應綠幣獎勵，記錄存入帳戶" last />
+
+          {/* What can be exchanged */}
+          <div
+            className="mt-8 rounded-2xl p-6 border"
+            style={{ background: 'var(--color-green-pale)', borderColor: 'var(--color-green-light)' }}
+          >
+            <p className="text-sm font-bold text-center mb-4" style={{ color: 'var(--color-green-dark)' }}>
+              可交換的資源類型
+            </p>
+            <div className="flex gap-3">
+              <OutcomeCard emoji="📦" label="生活用品" sub="家電、器具、衣物" variant="green" />
+              <OutcomeCard emoji="📚" label="書籍教材" sub="課本、繪本、雜誌" variant="blue" />
+              <OutcomeCard emoji="🌿" label="農產食材" sub="自種蔬果、醃漬品" variant="amber" />
+            </div>
+          </div>
+
+        </ServiceSection>
+
+        {/* ══ 3. BRAINWAVE DETECTION ══════════════════════════════════════ */}
         <ServiceSection id="brainwave-check" emoji="🧠" title="腦波檢測流程" subtitle="了解當下身心壓力與放鬆狀態">
 
           <Step n={1} title="預約報名" sub="透過 LINE 官方帳號預約，或直接至社區福利中心現場報名" />
