@@ -25,7 +25,7 @@ export default async function MemberPortalPage({ params }: { params: Promise<{ l
         {/* Header */}
         <div className="text-center mb-16">
           <div className="mb-8 flex justify-center">
-            <ZenStamp size="lg">會員</ZenStamp>
+            <ZenStamp size="lg">{locale === 'zh-TW' ? '會員' : 'MEMBER'}</ZenStamp>
           </div>
           <h1
             className="zen-display mb-6"
@@ -76,7 +76,7 @@ export default async function MemberPortalPage({ params }: { params: Promise<{ l
 
         {/* 功能預覽 */}
         <ZenSectionHeading
-          stamp="預告"
+          stamp={locale === 'zh-TW' ? '預告' : 'SOON'}
           title={locale === 'zh-TW' ? '即將開放的功能' : 'Upcoming Features'}
           subtitle={locale === 'zh-TW' ? '會員系統上線後，您將可使用以下功能' : 'After launch, members will access:'}
           center

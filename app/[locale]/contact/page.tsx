@@ -31,7 +31,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         {/* Header */}
         <div className="text-center mb-20">
           <div className="mb-6 flex justify-center">
-            <ZenStamp size="lg">聯繫</ZenStamp>
+            <ZenStamp size="lg">{locale === 'zh-TW' ? '聯繫' : 'CONTACT'}</ZenStamp>
           </div>
           <h1 className="zen-display mb-6" style={{ fontSize: 'clamp(40px, 6vw, 64px)', color: 'var(--color-green-ink)' }}>
             {t('title')}
@@ -45,7 +45,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         </div>
 
         {/* 三個聯絡管道 */}
-        <ZenSectionHeading stamp="管道" title={fl('聯絡方式', 'Get in Touch')} center />
+        <ZenSectionHeading stamp={fl('管道', 'CHANNEL')} title={fl('聯絡方式', 'Get in Touch')} center />
         <div className="grid md:grid-cols-3 gap-px mb-24" style={{ background: 'var(--color-zen-rule)' }}>
           {channels.map((c) => (
             <div key={c.name} className="px-7 py-10 flex flex-col" style={{ background: 'var(--color-zen-paper)' }}>
@@ -78,7 +78,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
         {/* 表單 */}
         <ZenSectionHeading
-          stamp="留言"
+          stamp={fl('留言', 'MESSAGE')}
           title={fl('線上諮詢表單', 'Inquiry Form')}
           subtitle={fl('我們將於 1–2 個工作日內回覆', 'We respond within 1–2 business days')}
           center

@@ -62,7 +62,7 @@ export default async function IdleExchangePage({ params }: { params: Promise<{ l
       <div className="max-w-4xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
           <div className="mb-6 flex justify-center">
-            <ZenStamp size="lg">閒置交換</ZenStamp>
+            <ZenStamp size="lg">{locale === 'zh-TW' ? '閒置交換' : 'IDLE'}</ZenStamp>
           </div>
           <h1 className="zen-display mb-6" style={{ fontSize: 'clamp(40px, 6vw, 64px)', color: 'var(--color-green-ink)' }}>
             {t('title')}
@@ -93,7 +93,7 @@ export default async function IdleExchangePage({ params }: { params: Promise<{ l
 
         {/* 種類 */}
         <ZenSectionHeading
-          stamp="種類"
+          stamp={locale === 'zh-TW' ? '種類' : 'TYPES'}
           title={t('categoriesTitle')}
           subtitle={locale === 'zh-TW' ? '以下類型物品均可登記，最終由工作人員現場確認' : 'Listed types accepted — subject to staff review'}
         />
@@ -122,7 +122,7 @@ export default async function IdleExchangePage({ params }: { params: Promise<{ l
         </div>
 
         {/* 據點 */}
-        <ZenSectionHeading stamp="據點" title={locale === 'zh-TW' ? '服務據點' : 'Location'} />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '據點' : 'PLACE'} title={locale === 'zh-TW' ? '服務據點' : 'Location'} />
         <div className="px-8 py-10 mb-20" style={{ background: 'var(--color-zen-paper-warm)' }}>
           <p className="zen-title mb-2" style={{ fontSize: 16, color: 'var(--color-green-ink)' }}>
             {locale === 'zh-TW' ? '台南示範據點 · 綠超人福利中心' : 'Tainan Demo Outlet · Greenman Welfare Center'}
@@ -145,7 +145,7 @@ export default async function IdleExchangePage({ params }: { params: Promise<{ l
         </div>
 
         {/* FAQ */}
-        <ZenSectionHeading stamp="問答" title={t('faqTitle')} />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '問答' : 'FAQ'} title={t('faqTitle')} />
         <div>
           {faq.map((f) => (
             <details key={f.q} className="py-5" style={{ borderBottom: '1px solid var(--color-zen-rule)' }}>

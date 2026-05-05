@@ -82,10 +82,10 @@ export default async function WellnessPage({ params }: { params: Promise<{ local
         />
         <div className="relative">
           <div className="mb-8 flex justify-center">
-            <ZenStamp size="lg">心靈環保</ZenStamp>
+            <ZenStamp size="lg">{locale === 'zh-TW' ? '心靈環保' : 'MIND'}</ZenStamp>
           </div>
           <h1 className="zen-display mb-8" style={{ fontSize: 'clamp(56px, 10vw, 128px)', color: 'var(--color-green-ink)' }}>
-            境隨心轉
+            {locale === 'zh-TW' ? '境隨心轉' : 'Inner Peace'}
           </h1>
           <div className="flex justify-center mb-8">
             <ZenLine width={48} />
@@ -97,19 +97,19 @@ export default async function WellnessPage({ params }: { params: Promise<{ local
       </section>
 
       <div className="max-w-4xl mx-auto px-6 py-20">
-        <ZenSectionHeading stamp="課程" title={t('title')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '課程' : 'COURSE'} title={t('title')} center />
         <div className="grid md:grid-cols-2 gap-px" style={{ background: 'var(--color-zen-rule)' }}>
           {courses.map((cat, i) => (
-            <div key={cat.cat} className="p-8" style={{ background: 'var(--color-zen-paper)' }}>
-              <div className="flex items-baseline gap-4 mb-6">
-                <span className="zen-serif" style={{ fontSize: 24, color: 'var(--color-zen-stamp)', fontWeight: 300 }}>
-                  {['壹', '貳', '參', '肆'][i]}
+            <div key={cat.cat} className="p-10" style={{ background: 'var(--color-zen-paper)' }}>
+              <div className="flex items-baseline gap-4 mb-8">
+                <span className="zen-serif" style={{ fontSize: 28, color: 'var(--color-zen-stamp)', fontWeight: 300 }}>
+                  {(locale === 'zh-TW' ? ['壹', '貳', '參', '肆'] : ['01', '02', '03', '04'])[i]}
                 </span>
-                <h3 className="zen-title" style={{ fontSize: 16, color: 'var(--color-green-ink)' }}>{cat.cat}</h3>
+                <h3 className="zen-title" style={{ fontSize: 17, color: 'var(--color-green-ink)' }}>{cat.cat}</h3>
               </div>
-              {cat.items.map((it) => (
-                <div key={it.name} className="mb-5 pb-5" style={{ borderBottom: '1px solid var(--color-zen-rule)' }}>
-                  <p className="zen-title mb-1" style={{ fontSize: 14, color: 'var(--color-green-ink)' }}>{it.name}</p>
+              {cat.items.map((it, j) => (
+                <div key={it.name} className="mb-7 pb-7" style={j < cat.items.length - 1 ? { borderBottom: '1px solid var(--color-zen-rule)' } : {}}>
+                  <p className="zen-title mb-2" style={{ fontSize: 14, color: 'var(--color-green-ink)' }}>{it.name}</p>
                   <p className="text-xs leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)' }}>{it.desc}</p>
                 </div>
               ))}

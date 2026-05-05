@@ -29,7 +29,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
         {/* Header */}
         <div className="text-center mb-20">
           <div className="mb-6 flex justify-center">
-            <ZenStamp size="lg">最新</ZenStamp>
+            <ZenStamp size="lg">{locale === 'zh-TW' ? '最新' : 'NEWS'}</ZenStamp>
           </div>
           <h1 className="zen-display mb-6" style={{ fontSize: 'clamp(40px, 6vw, 64px)', color: 'var(--color-green-ink)' }}>
             {t('title')}

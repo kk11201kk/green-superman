@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <div className="max-w-3xl mx-auto px-6 py-20">
-        <ZenSectionHeading stamp="願景" title={t('visionTitle')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '願景' : 'VISION'} title={t('visionTitle')} center />
         <p className="text-center mb-14 zen-display" style={{ fontSize: 22, color: 'var(--color-green-mid)', fontWeight: 400, letterSpacing: '0.1em', lineHeight: 1.8 }}>
           {t('visionLead')}
         </p>
@@ -62,10 +62,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           {pillars.map((p, i) => (
             <div key={p.title} className="p-8" style={{ background: 'var(--color-zen-paper)' }}>
               <div className="zen-serif mb-4" style={{ fontSize: 32, color: 'var(--color-zen-stamp)', fontWeight: 300 }}>
-                {['壹', '貳', '參'][i]}
+                {(locale === 'zh-TW' ? ['壹', '貳', '參'] : ['01', '02', '03'])[i]}
               </div>
               <h3 className="zen-title mb-4" style={{ fontSize: 16, color: 'var(--color-green-ink)' }}>
-                {p.title.replace(/^[🌱💛🤝]\s*/, '')}
+                {p.title.replace(/^[🌱💛🤝]\s*/u, '')}
               </h3>
               <p className="text-sm leading-loose" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)', letterSpacing: '0.05em' }}>
                 {p.desc}
@@ -75,7 +75,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
 
         {/* 核心使命 */}
-        <ZenSectionHeading stamp="使命" title={t('missionTitle')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '使命' : 'MISSION'} title={t('missionTitle')} center />
         <div className="px-8 py-14 mb-8 text-center" style={{ background: 'var(--color-green-ink)', color: 'var(--color-zen-paper)' }}>
           <p className="text-[11px] mb-6" style={{ letterSpacing: '0.4em', opacity: 0.7, fontFamily: 'var(--font-serif)' }}>
             {t('missionTag')}

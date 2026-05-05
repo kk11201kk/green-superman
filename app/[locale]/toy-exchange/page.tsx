@@ -49,7 +49,7 @@ export default async function ToyExchangePage({ params }: { params: Promise<{ lo
       <div className="max-w-4xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
           <div className="mb-6 flex justify-center">
-            <ZenStamp size="lg">玩具交換</ZenStamp>
+            <ZenStamp size="lg">{locale === 'zh-TW' ? '玩具交換' : 'TOYS'}</ZenStamp>
           </div>
           <h1 className="zen-display mb-6" style={{ fontSize: 'clamp(40px, 6vw, 64px)', color: 'var(--color-green-ink)' }}>
             {t('title')}
@@ -79,7 +79,7 @@ export default async function ToyExchangePage({ params }: { params: Promise<{ lo
 
         {/* 對照表 */}
         <ZenSectionHeading
-          stamp="對照"
+          stamp={locale === 'zh-TW' ? '對照' : 'TABLE'}
           title={locale === 'zh-TW' ? '綠幣換算參考表' : 'G-Coin Reference'}
           subtitle={locale === 'zh-TW' ? '實際綠幣數量由現場核驗人員依玩具狀況決定' : 'Final amount determined by staff'}
         />
@@ -115,7 +115,7 @@ export default async function ToyExchangePage({ params }: { params: Promise<{ lo
         </table>
 
         {/* 據點 */}
-        <ZenSectionHeading stamp="據點" title={locale === 'zh-TW' ? '服務據點' : 'Location'} />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '據點' : 'PLACE'} title={locale === 'zh-TW' ? '服務據點' : 'Location'} />
         <div className="px-8 py-10 mb-20" style={{ background: 'var(--color-zen-paper-warm)' }}>
           <p className="zen-title mb-2" style={{ fontSize: 16, color: 'var(--color-green-ink)' }}>
             {locale === 'zh-TW' ? '台南示範據點 · 綠超人福利中心' : 'Tainan Demo Outlet · Greenman Welfare Center'}
@@ -138,7 +138,7 @@ export default async function ToyExchangePage({ params }: { params: Promise<{ lo
         </div>
 
         {/* FAQ */}
-        <ZenSectionHeading stamp="問答" title={locale === 'zh-TW' ? '常見問題' : 'FAQ'} />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '問答' : 'FAQ'} title={locale === 'zh-TW' ? '常見問題' : 'FAQ'} />
         <div>
           {faq.map((f) => (
             <details key={f.q} className="py-5" style={{ borderBottom: '1px solid var(--color-zen-rule)' }}>

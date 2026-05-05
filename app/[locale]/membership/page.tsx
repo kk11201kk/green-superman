@@ -98,7 +98,7 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
           <div className="zen-display mb-2" style={{ fontSize: 'clamp(64px, 10vw, 120px)', color: 'var(--color-green-ink)', lineHeight: 1 }}>
             3,600
           </div>
-          <p className="zen-serif mb-8" style={{ fontSize: 14, color: 'var(--color-green-mid)', letterSpacing: '0.3em' }}>NT · 年</p>
+          <p className="zen-serif mb-8" style={{ fontSize: 14, color: 'var(--color-green-mid)', letterSpacing: '0.3em' }}>{locale === 'zh-TW' ? 'NT · 年' : 'NT · Year'}</p>
           <div className="flex justify-center mb-8">
             <ZenLine width={48} />
           </div>
@@ -120,7 +120,7 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
         </div>
 
         {/* Benefits */}
-        <ZenSectionHeading stamp="權益" title={t('benefitsTitle')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '權益' : 'PERKS'} title={t('benefitsTitle')} center />
         <div className="grid md:grid-cols-3 gap-px mb-20" style={{ background: 'var(--color-zen-rule)' }}>
           {benefits.map((b, i) => (
             <div key={b.title} className="p-6" style={{ background: 'var(--color-zen-paper)' }}>
@@ -134,7 +134,7 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
         </div>
 
         {/* Steps */}
-        <ZenSectionHeading stamp="加入" title={t('howToJoinTitle')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '加入' : 'JOIN'} title={t('howToJoinTitle')} center />
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {steps.map((s, i) => (
             <div key={i} className="text-center">
@@ -151,7 +151,7 @@ export default async function MembershipPage({ params }: { params: Promise<{ loc
         </div>
 
         {/* FAQ */}
-        <ZenSectionHeading stamp="問答" title={locale === 'zh-TW' ? '常見問題' : 'FAQ'} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '問答' : 'FAQ'} title={locale === 'zh-TW' ? '常見問題' : 'FAQ'} center />
         <div className="mb-16">
           {faq.map((f) => (
             <details key={f.q} className="py-5" style={{ borderBottom: '1px solid var(--color-zen-rule)' }}>

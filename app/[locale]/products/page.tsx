@@ -37,16 +37,16 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
   return (
     <div style={{ background: 'var(--color-zen-paper)' }}>
       <div className="max-w-4xl mx-auto px-6 py-20">
-        <ZenSectionHeading stamp="嚴選" title={t('title')} subtitle={t('subtitle')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '嚴選' : 'SELECT'} title={t('title')} subtitle={t('subtitle')} center />
         <div className="grid md:grid-cols-2 gap-px" style={{ background: 'var(--color-zen-rule)' }}>
           {products.map((p, i) => (
-            <div key={p.name} className="p-7 flex gap-5" style={{ background: 'var(--color-zen-paper)' }}>
-              <div className="zen-serif flex-shrink-0" style={{ fontSize: 28, color: 'var(--color-zen-stamp)', fontWeight: 300, lineHeight: 1, minWidth: 32 }}>
+            <div key={p.name} className="p-10 flex gap-7" style={{ background: 'var(--color-zen-paper)' }}>
+              <div className="zen-serif flex-shrink-0" style={{ fontSize: 32, color: 'var(--color-zen-stamp)', fontWeight: 300, lineHeight: 1, minWidth: 36 }}>
                 {nums[i]}
               </div>
               <div className="flex-1">
-                <h3 className="zen-title mb-2" style={{ fontSize: 15, color: 'var(--color-green-ink)' }}>{p.name}</h3>
-                <p className="text-xs leading-loose mb-3" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)' }}>{p.desc}</p>
+                <h3 className="zen-title mb-3" style={{ fontSize: 15, color: 'var(--color-green-ink)' }}>{p.name}</h3>
+                <p className="text-xs leading-loose mb-5" style={{ color: 'var(--color-green-mid)', fontFamily: 'var(--font-serif)' }}>{p.desc}</p>
                 <p className="text-xs zen-serif" style={{ color: 'var(--color-zen-stamp)', letterSpacing: '0.2em' }}>{p.value}</p>
               </div>
             </div>

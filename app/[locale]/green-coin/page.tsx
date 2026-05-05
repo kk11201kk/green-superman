@@ -37,7 +37,7 @@ export default async function GreenCoinPage({ params }: { params: Promise<{ loca
       <div className="max-w-4xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
           <div className="mb-6 flex justify-center">
-            <ZenStamp size="lg">綠幣</ZenStamp>
+            <ZenStamp size="lg">{locale === 'zh-TW' ? '綠幣' : 'G·COIN'}</ZenStamp>
           </div>
           <h1 className="zen-display mb-6" style={{ fontSize: 'clamp(48px, 8vw, 96px)', color: 'var(--color-green-ink)' }}>
             G · COIN
@@ -61,7 +61,7 @@ export default async function GreenCoinPage({ params }: { params: Promise<{ loca
         </div>
 
         {/* 取得流程 */}
-        <ZenSectionHeading stamp="流程" title={t('howToTitle')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '流程' : 'STEPS'} title={t('howToTitle')} center />
         <div className="grid grid-cols-3 gap-8 mb-20">
           {steps.map((s, i) => (
             <div key={i} className="text-center">
@@ -78,7 +78,7 @@ export default async function GreenCoinPage({ params }: { params: Promise<{ loca
         </div>
 
         {/* 用途 */}
-        <ZenSectionHeading stamp="用途" title={t('usageTitle')} center />
+        <ZenSectionHeading stamp={locale === 'zh-TW' ? '用途' : 'USAGE'} title={t('usageTitle')} center />
         <div className="grid md:grid-cols-3 gap-px" style={{ background: 'var(--color-zen-rule)' }}>
           {usages.map((u, i) => (
             <div key={u.title} className="p-8" style={{ background: 'var(--color-zen-paper)' }}>
